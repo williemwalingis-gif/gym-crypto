@@ -1,33 +1,50 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WILLIEM COIN — $WLM</title>
 
-    <title>GYM — Crypto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+    <!-- BACKGROUND -->
+    <div class="bg-grid"></div>
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+
     <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="logo">
-            GYM<span>.</span>
+    <header class="navbar">
+
+        <div class="brand">
+            <div class="brand-logo">W</div>
+
+            <div>
+                <div class="brand-name">WILLIEM COIN</div>
+                <div class="brand-symbol">$WLM</div>
+            </div>
         </div>
 
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#airdrop">Airdrop</a>
+        <nav>
+            <a href="#home" class="active">Home</a>
             <a href="#about">About</a>
-        </div>
+            <a href="#tokenomics">Tokenomics</a>
+            <a href="#roadmap">Roadmap</a>
+            <a href="#airdrop">Airdrop</a>
+        </nav>
 
         <button class="wallet-btn" id="connectWallet">
-            Connect Wallet
+            <span>▣</span>
+            CONNECT WALLET
         </button>
-    </nav>
+
+    </header>
 
 
     <!-- HERO -->
@@ -37,40 +54,55 @@
 
             <div class="hero-content">
 
-                <div class="badge">
-                    ⚡ Built on Solana
+                <div class="eyebrow">
+                    <span></span>
+                    THE NEXT GENERATION MEMECOIN
                 </div>
 
                 <h1>
-                    THE NEXT<br>
-                    <span>GENERATION</span><br>
-                    OF CRYPTO.
+                    WELCOME TO THE
+                    <strong>WILLIEM</strong>
+                    <em>ECONOMY</em>
                 </h1>
 
                 <p>
-                    GYM is building a new generation of community-driven
-                    crypto experiences on Solana.
+                    A community-driven memecoin built on confidence,
+                    ambition and the power of believers.
                 </p>
 
+                <div class="hero-symbol">
+                    <span>W</span>
+                    <b>$WLM</b>
+                </div>
+
                 <div class="hero-buttons">
-                    <button class="primary-btn" id="heroWallet">
-                        Connect Wallet
+                    <button class="primary-btn" onclick="buyCoin()">
+                        BUY $WLM 🚀
                     </button>
 
-                    <a href="#airdrop" class="secondary-btn">
-                        Explore Airdrop
-                    </a>
+                    <button class="secondary-btn" onclick="showContract()">
+                        VIEW CONTRACT ↗
+                    </button>
                 </div>
 
             </div>
 
-            <div class="hero-visual">
 
-                <div class="orb"></div>
+            <!-- CHARACTER -->
+            <div class="hero-character">
 
-                <div class="coin">
-                    GYM
+                <div class="coin-orbit orbit-one"></div>
+                <div class="coin-orbit orbit-two"></div>
+
+                <div class="main-coin">
+                    <span>W</span>
                 </div>
+
+                <img src="williem.png" alt="Williem" class="williem-img">
+
+                <div class="floating-coin coin-a">W</div>
+                <div class="floating-coin coin-b">W</div>
+                <div class="floating-coin coin-c">W</div>
 
             </div>
 
@@ -80,271 +112,286 @@
         <!-- STATS -->
         <section class="stats">
 
-            <div class="stat">
-                <h3>100K+</h3>
-                <p>Community</p>
-            </div>
-
-            <div class="stat">
-                <h3>SOLANA</h3>
-                <p>Network</p>
-            </div>
-
-            <div class="stat">
-                <h3>∞</h3>
-                <p>Possibilities</p>
-            </div>
-
-        </section>
-
-
-        <!-- AIRDROP -->
-        <section class="airdrop-section" id="airdrop">
-
-            <div class="section-label">
-                AIRDROP
-            </div>
-
-            <h2>
-                GYM Airdrop
-            </h2>
-
-            <p class="section-description">
-                Connect your wallet to check your eligibility
-                for the GYM community airdrop.
-            </p>
-
-
-            <div class="airdrop-card">
-
-                <div class="airdrop-icon">
-                    🎁
+            <div class="stat-card">
+                <div class="stat-icon">↗</div>
+                <div>
+                    <small>MARKET CAP</small>
+                    <strong>$0</strong>
+                    <span class="green">+0.00%</span>
                 </div>
+            </div>
 
-                <div class="airdrop-info">
-
-                    <h3>Community Airdrop</h3>
-
-                    <p>
-                        Early supporters may be eligible
-                        for GYM rewards.
-                    </p>
-
-                    <div class="airdrop-status">
-                        ● Airdrop Live
-                    </div>
-
+            <div class="stat-card">
+                <div class="stat-icon">♟</div>
+                <div>
+                    <small>HOLDERS</small>
+                    <strong>0</strong>
+                    <span class="green">+0</span>
                 </div>
+            </div>
 
-                <button class="claim-btn" id="claimBtn">
-                    Check Eligibility
-                </button>
+            <div class="stat-card">
+                <div class="stat-icon">◉</div>
+                <div>
+                    <small>TOTAL SUPPLY</small>
+                    <strong>1B</strong>
+                    <span>WLM</span>
+                </div>
+            </div>
 
+            <div class="stat-card">
+                <div class="stat-icon">◈</div>
+                <div>
+                    <small>LIQUIDITY</small>
+                    <strong>$0</strong>
+                    <span class="green">+0.00%</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">⌁</div>
+                <div>
+                    <small>CHAIN</small>
+                    <strong>BNB</strong>
+                    <span>CHAIN</span>
+                </div>
             </div>
 
         </section>
 
 
         <!-- ABOUT -->
-        <section class="about" id="about">
+        <section class="about section" id="about">
 
-            <div class="section-label">
-                ABOUT GYM
+            <div class="section-label">01 — ABOUT</div>
+
+            <div class="about-grid">
+
+                <div>
+                    <h2>
+                        ONE COIN.
+                        <br>
+                        <span>ONE COMMUNITY.</span>
+                    </h2>
+                </div>
+
+                <div class="about-text">
+                    <p>
+                        WILLIEM COIN is more than just another memecoin.
+                        It's an experiment built around personality,
+                        community and the belief that one ridiculous idea
+                        can become something massive.
+                    </p>
+
+                    <p>
+                        No complicated promises. No fake utility.
+                        Just WILLIEM, the community, and the journey.
+                    </p>
+                </div>
+
             </div>
-
-            <h2>
-                Built for the next wave.
-            </h2>
-
-            <p>
-                GYM combines crypto, community and technology
-                into one ecosystem built for the Solana community.
-            </p>
 
         </section>
 
-    </main>
 
+        <!-- TOKENOMICS -->
+        <section class="section" id="tokenomics">
 
-    <!-- FOOTER -->
-    <footer>
+            <div class="section-label">02 — TOKENOMICS</div>
 
-        <div class="logo">
-            GYM<span>.</span>
-        </div>
+            <div class="cards-grid">
 
-        <p>
-            © 2026 GYM Crypto. All rights reserved.
-        </p>
+                <div class="panel token-panel">
 
-    </footer>
+                    <h3>TOKENOMICS</h3>
 
+                    <div class="token-chart">
+                        <div class="chart-inner">
+                            <strong>1B</strong>
+                            <small>WLM</small>
+                        </div>
+                    </div>
 
-    <script src="script.js"></script>
+                    <div class="legend">
 
-</body>
-=======
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <div>
+                            <i class="purple"></i>
+                            <span>Liquidity</span>
+                            <b>40%</b>
+                        </div>
 
-    <title>GYM — Crypto</title>
+                        <div>
+                            <i class="gold"></i>
+                            <span>Marketing</span>
+                            <b>20%</b>
+                        </div>
 
-    <link rel="stylesheet" href="style.css">
-</head>
+                        <div>
+                            <i class="blue"></i>
+                            <span>Community</span>
+                            <b>20%</b>
+                        </div>
 
-<body>
+                        <div>
+                            <i class="pink"></i>
+                            <span>Team</span>
+                            <b>10%</b>
+                        </div>
 
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="logo">
-            GYM<span>.</span>
-        </div>
+                        <div>
+                            <i class="green-dot"></i>
+                            <span>Development</span>
+                            <b>10%</b>
+                        </div>
 
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#airdrop">Airdrop</a>
-            <a href="#about">About</a>
-        </div>
+                    </div>
 
-        <button class="wallet-btn" id="connectWallet">
-            Connect Wallet
-        </button>
-    </nav>
-
-
-    <!-- HERO -->
-    <main id="home">
-
-        <section class="hero">
-
-            <div class="hero-content">
-
-                <div class="badge">
-                    ⚡ Built on Solana
                 </div>
 
-                <h1>
-                    THE NEXT<br>
-                    <span>GENERATION</span><br>
-                    OF CRYPTO.
-                </h1>
 
-                <p>
-                    GYM is building a new generation of community-driven
-                    crypto experiences on Solana.
-                </p>
+                <!-- ROADMAP -->
+                <div class="panel" id="roadmap">
 
-                <div class="hero-buttons">
-                    <button class="primary-btn" id="heroWallet">
-                        Connect Wallet
+                    <h3>ROADMAP</h3>
+
+                    <div class="roadmap">
+
+                        <div class="road-item">
+                            <div class="road-icon">🚀</div>
+
+                            <div>
+                                <small>PHASE 01</small>
+                                <h4>LAUNCH</h4>
+                                <p>
+                                    Launch WILLIEM COIN,
+                                    website and community.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="road-item">
+                            <div class="road-icon">📈</div>
+
+                            <div>
+                                <small>PHASE 02</small>
+                                <h4>GROWTH</h4>
+                                <p>
+                                    Marketing, partnerships
+                                    and exchange listings.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="road-item">
+                            <div class="road-icon">🌐</div>
+
+                            <div>
+                                <small>PHASE 03</small>
+                                <h4>EXPANSION</h4>
+                                <p>
+                                    Build utilities and expand
+                                    the WILLIEM ecosystem.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- AIRDROP -->
+                <div class="panel" id="airdrop">
+
+                    <h3>AIRDROP CHECKER</h3>
+
+                    <p class="panel-description">
+                        Check your wallet eligibility for the
+                        upcoming WILLIEM COIN airdrop.
+                    </p>
+
+                    <div class="wallet-input">
+                        <input
+                            type="text"
+                            id="walletAddress"
+                            placeholder="Paste your wallet address"
+                        >
+                        <span>▣</span>
+                    </div>
+
+                    <button class="full-btn" onclick="checkAirdrop()">
+                        CHECK WALLET
                     </button>
 
-                    <a href="#airdrop" class="secondary-btn">
-                        Explore Airdrop
-                    </a>
-                </div>
+                    <div class="status-box">
 
-            </div>
+                        <small>YOUR STATUS</small>
 
-            <div class="hero-visual">
+                        <strong id="airdropStatus">
+                            NOT CHECKED
+                        </strong>
 
-                <div class="orb"></div>
+                        <p id="airdropMessage">
+                            Enter your wallet and check eligibility.
+                        </p>
 
-                <div class="coin">
-                    GYM
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- STATS -->
-        <section class="stats">
-
-            <div class="stat">
-                <h3>100K+</h3>
-                <p>Community</p>
-            </div>
-
-            <div class="stat">
-                <h3>SOLANA</h3>
-                <p>Network</p>
-            </div>
-
-            <div class="stat">
-                <h3>∞</h3>
-                <p>Possibilities</p>
-            </div>
-
-        </section>
-
-
-        <!-- AIRDROP -->
-        <section class="airdrop-section" id="airdrop">
-
-            <div class="section-label">
-                AIRDROP
-            </div>
-
-            <h2>
-                GYM Airdrop
-            </h2>
-
-            <p class="section-description">
-                Connect your wallet to check your eligibility
-                for the GYM community airdrop.
-            </p>
-
-
-            <div class="airdrop-card">
-
-                <div class="airdrop-icon">
-                    🎁
-                </div>
-
-                <div class="airdrop-info">
-
-                    <h3>Community Airdrop</h3>
-
-                    <p>
-                        Early supporters may be eligible
-                        for GYM rewards.
-                    </p>
-
-                    <div class="airdrop-status">
-                        ● Airdrop Live
                     </div>
 
                 </div>
 
-                <button class="claim-btn" id="claimBtn">
-                    Check Eligibility
-                </button>
+            </div>
+
+        </section>
+
+
+        <!-- COMMUNITY -->
+        <section class="community section">
+
+            <div>
+
+                <div class="section-label">03 — COMMUNITY</div>
+
+                <h2>
+                    JOIN THE
+                    <span>MOVEMENT.</span>
+                </h2>
+
+                <p>
+                    Be part of the WILLIEM COIN community.
+                </p>
+
+            </div>
+
+            <div class="socials">
+
+                <a href="#" title="Telegram">✈</a>
+                <a href="#" title="X">𝕏</a>
+                <a href="#" title="Discord">◉</a>
+                <a href="#" title="Instagram">◎</a>
+                <a href="#" title="TikTok">♪</a>
+                <a href="#" title="YouTube">▶</a>
 
             </div>
 
         </section>
 
 
-        <!-- ABOUT -->
-        <section class="about" id="about">
+        <!-- QUOTE -->
+        <section class="quote">
 
-            <div class="section-label">
-                ABOUT GYM
+            <div class="quote-mark">“</div>
+
+            <div>
+                <p>
+                    We don't just build a coin.
+                    <br>
+                    <strong>We build a movement.</strong>
+                </p>
+
+                <span>— WILLIEM</span>
             </div>
 
-            <h2>
-                Built for the next wave.
-            </h2>
-
-            <p>
-                GYM combines crypto, community and technology
-                into one ecosystem built for the Solana community.
-            </p>
+            <div class="big-w">W</div>
 
         </section>
 
@@ -354,19 +401,53 @@
     <!-- FOOTER -->
     <footer>
 
-        <div class="logo">
-            GYM<span>.</span>
+        <div class="footer-brand">
+
+            <div class="brand-logo">W</div>
+
+            <div>
+                <strong>WILLIEM COIN</strong>
+                <small>$WLM</small>
+            </div>
+
         </div>
 
         <p>
-            © 2026 GYM Crypto. All rights reserved.
+            © 2026 WILLIEM COIN. All rights reserved.
+        </p>
+
+        <p>
+            Built with 💜 by Williem
         </p>
 
     </footer>
 
 
+    <!-- MODAL -->
+    <div class="modal" id="modal">
+
+        <div class="modal-box">
+
+            <button class="close-modal" onclick="closeModal()">×</button>
+
+            <div class="modal-logo">W</div>
+
+            <h3 id="modalTitle">WILLIEM COIN</h3>
+
+            <p id="modalText">
+                Welcome to the WILLIEM ecosystem.
+            </p>
+
+            <button class="primary-btn" onclick="closeModal()">
+                LET'S GO 🚀
+            </button>
+
+        </div>
+
+    </div>
+
+
     <script src="script.js"></script>
 
 </body>
->>>>>>> 668e313f16de60d5404f59580d83b3959934e739
 </html>
