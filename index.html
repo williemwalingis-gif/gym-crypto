@@ -447,6 +447,36 @@
     </div>
 
 
+    <!-- PHANTAM WALLET MODAL -->
+    <div class="phantom-modal" id="phantomModal">
+
+        <div class="phantom-modal-box">
+
+            <button class="phantom-close" onclick="closePhantomModal()">×</button>
+
+            <div id="phantomStepConnect">
+                <div class="phantom-logo">👻</div>
+                <h3>Connect to Phantam Wallet</h3>
+                <p class="phantom-sub">Approve the connection request to continue</p>
+                <button class="primary-btn phantom-full-btn" id="phantomConnectBtn" onclick="doPhantomConnect()">
+                    Connect
+                </button>
+            </div>
+
+            <div id="phantomStepConnected" class="hidden">
+                <div class="phantom-success">✓</div>
+                <h3>Wallet Connected</h3>
+                <p class="phantom-address" id="phantomAddress">7xKX...9wY2</p>
+                <button class="primary-btn phantom-full-btn" onclick="closePhantomModal()">
+                    Done
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+
     <script src="script.js"></script>
 
 </body>
