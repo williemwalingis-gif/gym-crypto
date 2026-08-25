@@ -151,9 +151,12 @@ particleStyle.innerHTML = `
 document.head.appendChild(particleStyle);
 
 /* =====================================================
-   FAKE PANTOME WALLET
-   DEMO ONLY — DOES NOT CONNECT TO REAL WALLET
+   FAKE PHANTOM WALLET
+   DEMO ONLY — BISA ISI NAMA SENDIRI
 ===================================================== */
+
+/* GLOBAL BUAT SIMPEN NAMA */
+let demoWalletName = "";
 
 /* RANDOM FAKE ADDRESS */
 function randomFakeAddress() {
@@ -168,6 +171,7 @@ window.openPhantomModal = function() {
     const phantomStepConnect = document.getElementById("phantomStepConnect");
     const phantomStepConnected = document.getElementById("phantomStepConnected");
     if (!phantomModal) return;
+    document.getElementById("phantomNameInput").value = ""; // reset input
     phantomStepConnect.classList.remove("hidden");
     phantomStepConnected.classList.add("hidden");
     phantomModal.classList.add("show");
@@ -179,18 +183,28 @@ window.closePhantomModal = function() {
     if (phantomModal) phantomModal.classList.remove("show");
 }
 
-/* FAKE PHANTOM CONNECT */
+/* FAKE PHANTOM CONNECT - UDAH BISA AMBIL NAMA */
 window.doPhantomConnect = function() {
     const btn = document.getElementById("phantomConnectBtn");
     const address = document.getElementById("phantomAddress");
+    const nameDisplay = document.getElementById("phantomNameDisplay");
+    const nameInput = document.getElementById("phantomNameInput");
     const stepConnect = document.getElementById("phantomStepConnect");
     const stepConnected = document.getElementById("phantomStepConnected");
     if (!btn) return;
+
+    demoWalletName = nameInput.value.trim();
+    if (demoWalletName === "") {
+        alert("Isi nama dulu bro 😅");
+        return;
+    }
+
     btn.textContent = "Connecting...";
     btn.disabled = true;
     setTimeout(() => {
         walletConnected = true;
         if (address) address.textContent = randomFakeAddress();
+        if (nameDisplay) nameDisplay.textContent = demoWalletName; // tampilin nama
         stepConnect.classList.add("hidden");
         stepConnected.classList.remove("hidden");
         btn.textContent = "Connect";
@@ -207,18 +221,19 @@ if (phantomModal) {
     });
 }
 
-/* UPDATE WALLET BUTTON */
+/* UPDATE WALLET BUTTON - SEKARANG PAKE NAMA */
 function updateWalletButton() {
     const button = document.getElementById("connectWallet");
     if (!button) return;
     if (walletConnected) {
-        button.innerHTML = "✓ WALLET CONNECTED";
+        button.innerHTML = `✓ ${demoWalletName}`; // <--- INI KUNCINYA
         button.style.borderColor = "#35d98b";
         button.style.color = "#35d98b";
     } else {
         button.innerHTML = "▣ CONNECT WALLET";
         button.style.borderColor = "";
         button.style.color = "";
+        demoWalletName = "";
     }
 }
 
@@ -237,5 +252,4 @@ if (mainConnectButton) {
 
 /* INITIAL STATE */
 updateWalletButton();
-
 }); // END DOMContentLoaded

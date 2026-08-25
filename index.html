@@ -4,42 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WILLIEM COIN — $WLM</title>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="style.css">
     
     <style>
-      /* TAMBAHAN CSS BUAT MODAL PHANTOM */
       .phantom-modal {
-        display: none;
-        position: fixed;
-        z-index: 99999;
-        left: 0; top: 0;
-        width: 100%; height: 100%;
-        background: rgba(0,0,0,0.85);
-        backdrop-filter: blur(8px);
-        justify-content: center;
-        align-items: center;
+        display: none; position: fixed; z-index: 99999;
+        left: 0; top: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+        justify-content: center; align-items: center;
       }
       .phantom-modal.show { display: flex; }
       .phantom-modal-box {
-        background: #111118;
-        border: 1px solid #a855ff;
-        padding: 35px 30px;
-        border-radius: 20px;
-        width: 380px;
-        text-align: center;
-        color: white;
-        position: relative;
-        box-shadow: 0 0 30px rgba(168,85,255,0.3);
+        background: #111118; border: 1px solid #a855ff; padding: 35px 30px;
+        border-radius: 20px; width: 380px; text-align: center; color: white;
+        position: relative; box-shadow: 0 0 30px rgba(168,85,255,0.3);
       }
       .phantom-close {
-        position: absolute;
-        top: 15px; right: 20px;
-        background: none; border: none;
+        position: absolute; top: 15px; right: 20px; background: none; border: none;
         color: #888; font-size: 24px; cursor: pointer;
       }
       .phantom-close:hover { color: white; }
@@ -54,42 +38,24 @@
       .hidden { display: none; }
     </style>
 </head>
-
 <body>
 
-    <!-- BACKGROUND -->
     <div class="bg-grid"></div>
     <div class="glow glow-1"></div>
     <div class="glow glow-2"></div>
 
-    <!-- NAVBAR -->
     <header class="navbar">
-
         <div class="brand">
             <div class="brand-logo">W</div>
-            <div>
-                <div class="brand-name">WILLIEM COIN</div>
-                <div class="brand-symbol">$WLM</div>
-            </div>
+            <div><div class="brand-name">WILLIEM COIN</div><div class="brand-symbol">$WLM</div></div>
         </div>
-
         <nav>
-            <a href="#home" class="active">Home</a>
-            <a href="#about">About</a>
-            <a href="#tokenomics">Tokenomics</a>
-            <a href="#roadmap">Roadmap</a>
-            <a href="#airdrop">Airdrop</a>
+            <a href="#home" class="active">Home</a><a href="#about">About</a>
+            <a href="#tokenomics">Tokenomics</a><a href="#roadmap">Roadmap</a><a href="#airdrop">Airdrop</a>
         </nav>
-
-        <!-- GUE TAMBAH ID DISINI BIAR JS NYAMBUNG -->
-        <button class="wallet-btn" id="connectWallet">
-            <span>▣</span>
-            CONNECT WALLET
-        </button>
-
+        <button class="wallet-btn" id="connectWallet"><span>▣</span> CONNECT WALLET</button>
     </header>
 
-    <!-- HERO -->
     <main id="home">
         <section class="hero">
             <div class="hero-content">
@@ -102,7 +68,6 @@
                     <button class="secondary-btn" onclick="showContract()">VIEW CONTRACT ↗</button>
                 </div>
             </div>
-
             <div class="hero-character">
                 <div class="coin-orbit orbit-one"></div>
                 <div class="coin-orbit orbit-two"></div>
@@ -114,11 +79,6 @@
             </div>
         </section>
 
-        <!-- STATS, ABOUT, TOKENOMICS, ROADMAP, AIRDROP, COMMUNITY, QUOTE, FOOTER -->
-        <!-- KODEMU DARI SINI SAMA AJA, GUE SKIP BIAR GA PANJANG -->
-        <!-- TINGGAL COPY DARI KODE LAMAMU MULAI DARI <section class="stats"> SAMPE </footer> -->
-
-        <!-- STATS -->
         <section class="stats">
             <div class="stat-card"><div class="stat-icon">↗</div><div><small>MARKET CAP</small><strong>$0</strong><span class="green">+0.00%</span></div></div>
             <div class="stat-card"><div class="stat-icon">♟</div><div><small>HOLDERS</small><strong>0</strong><span class="green">+0</span></div></div>
@@ -127,7 +87,6 @@
             <div class="stat-card"><div class="stat-icon">⌁</div><div><small>CHAIN</small><strong>BNB</strong><span>CHAIN</span></div></div>
         </section>
 
-        <!-- ABOUT -->
         <section class="about section" id="about">
             <div class="section-label">01 — ABOUT</div>
             <div class="about-grid">
@@ -136,7 +95,6 @@
             </div>
         </section>
 
-        <!-- TOKENOMICS + ROADMAP + AIRDROP -->
         <section class="section" id="tokenomics">
             <div class="section-label">02 — TOKENOMICS</div>
             <div class="cards-grid">
@@ -146,22 +104,17 @@
             </div>
         </section>
 
-        <!-- COMMUNITY -->
         <section class="community section"><div><div class="section-label">03 — COMMUNITY</div><h2>JOIN THE <span>MOVEMENT.</span></h2><p>Be part of the WILLIEM COIN community.</p></div><div class="socials"><a href="#" title="Telegram">✈</a><a href="#" title="X">𝕏</a><a href="#" title="Discord">◉</a><a href="#" title="Instagram">◎</a><a href="#" title="TikTok">♪</a><a href="#" title="YouTube">▶</a></div></section>
 
-        <!-- QUOTE -->
         <section class="quote"><div class="quote-mark">“</div><div><p>We don't just build a coin.<br><strong>We build a movement.</strong></p><span>— WILLIEM</span></div><div class="big-w">W</div></section>
-
     </main>
 
-    <!-- FOOTER -->
     <footer>
         <div class="footer-brand"><div class="brand-logo">W</div><div><strong>WILLIEM COIN</strong><small>$WLM</small></div></div>
         <p>© 2026 WILLIEM COIN. All rights reserved.</p>
         <p>Built with 💜 by Williem</p>
     </footer>
 
-    <!-- MODAL UMUM -->
     <div class="modal" id="modal">
         <div class="modal-box">
             <button class="close-modal" onclick="closeModal()">×</button>
@@ -172,19 +125,21 @@
         </div>
     </div>
 
-    <!-- PHANTOM WALLET MODAL - UDAH GUE BENERIN NAMA -->
     <div class="phantom-modal" id="phantomModal">
         <div class="phantom-modal-box">
             <button class="phantom-close" onclick="closePhantomModal()">×</button>
             <div id="phantomStepConnect">
                 <div class="phantom-logo">👻</div>
-                <h3>Connect to Pantome Wallet</h3>
-                <p class="phantom-sub">*Demo Only - Approve to continue*</p>
+                <h3>Connect to Phantom Wallet</h3>
+                <p class="phantom-sub">*Demo Only - Isi nama bebas*</p>
+                <label style="display:block; text-align:left; font-size:14px; margin-bottom:5px; color:#aaa;">Masukkan Nama Demo</label>
+                <input type="text" id="phantomNameInput" placeholder="Contoh: ABCDE" style="width:100%; padding:12px; margin-bottom:15px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter;">
                 <button class="primary-btn phantom-full-btn" id="phantomConnectBtn" onclick="doPhantomConnect()">Connect</button>
             </div>
             <div id="phantomStepConnected" class="hidden">
                 <div class="phantom-success">✓</div>
                 <h3>Wallet Connected</h3>
+                <p style="margin:5px 0 10px; color:#aaa;">Nama: <b id="phantomNameDisplay" style="color:#35d98b;"></b></p>
                 <p class="phantom-address" id="phantomAddress">7xKX...9wY2</p>
                 <button class="primary-btn phantom-full-btn" onclick="closePhantomModal()">Done</button>
             </div>
