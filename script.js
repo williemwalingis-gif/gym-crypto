@@ -1,11 +1,11 @@
 /* =========================================
    WILLIEM COIN — INTERACTIVE WEBSITE
-   (FIXED VERSION v2 - dicocokkan dengan HTML asli)
+   WALLET DEMO VERSION
 ========================================= */
 
 
 /* =========================
-   WALLET CONNECT
+   GLOBAL STATE
 ========================= */
 
 let walletConnected = false;
@@ -41,10 +41,6 @@ function showContract() {
 
 /* =========================
    AIRDROP
-
-   (Revisi dari fix sebelumnya: setelah cek HTML asli,
-   id="walletAddress" cuma dipakai SEKALI di sini, jadi
-   dikembalikan seperti semula - tidak perlu ubah HTML.)
 ========================= */
 
 function checkAirdrop() {
@@ -58,9 +54,11 @@ function checkAirdrop() {
     const message =
         document.getElementById("airdropMessage");
 
+
     if (!walletInput || !status || !message) {
         return;
     }
+
 
     const wallet =
         walletInput.value.trim();
@@ -68,9 +66,11 @@ function checkAirdrop() {
 
     if (wallet.length < 10) {
 
-        status.textContent = "INVALID WALLET";
+        status.textContent =
+            "INVALID WALLET";
 
-        status.style.color = "#ff5c7a";
+        status.style.color =
+            "#ff5c7a";
 
         message.textContent =
             "Please enter a valid wallet address.";
@@ -79,9 +79,11 @@ function checkAirdrop() {
     }
 
 
-    status.textContent = "ELIGIBLE ✓";
+    status.textContent =
+        "ELIGIBLE ✓";
 
-    status.style.color = "#35d98b";
+    status.style.color =
+        "#35d98b";
 
     message.textContent =
         "Congratulations! Your wallet is eligible for the WILLIEM COIN airdrop.";
@@ -90,7 +92,7 @@ function checkAirdrop() {
 
 
 /* =========================
-   MODAL
+   MAIN MODAL
 ========================= */
 
 function showModal(title, message) {
@@ -104,13 +106,17 @@ function showModal(title, message) {
     const modalText =
         document.getElementById("modalText");
 
+
     if (!modal || !modalTitle || !modalText) {
         return;
     }
 
-    modalTitle.textContent = title;
 
-    modalText.textContent = message;
+    modalTitle.textContent =
+        title;
+
+    modalText.textContent =
+        message;
 
     modal.classList.add("show");
 
@@ -122,9 +128,11 @@ function closeModal() {
     const modal =
         document.getElementById("modal");
 
+
     if (!modal) {
         return;
     }
+
 
     modal.classList.remove("show");
 
@@ -138,6 +146,7 @@ function closeModal() {
 
 const mainModal =
     document.getElementById("modal");
+
 
 if (mainModal) {
 
@@ -159,66 +168,72 @@ if (mainModal) {
 
 /* =========================
    NAVBAR ACTIVE STATE
-
-   FIX: sebelumnya pakai document.querySelectorAll("section[id]"),
-   yang cuma nangkep tag <section>. Di HTML kamu, id="home" ada di
-   <main>, dan id="roadmap"/id="airdrop" ada di <div class="panel">
-   - bukan <section> - jadi ketiganya nggak pernah kedeteksi dan
-   link nav-nya nggak pernah highlight pas discroll ke situ.
-
-   Sekarang ID diambil langsung dari href tiap link nav, jadi nggak
-   peduli itu tag <main>, <section>, atau <div>.
 ========================= */
 
 const navLinks =
     document.querySelectorAll(".navbar nav a");
 
+
 const navTargetIds =
     Array.from(navLinks).map(
-        link => link.getAttribute("href").replace("#", "")
+        link =>
+            link.getAttribute("href").replace("#", "")
     );
 
-window.addEventListener("scroll", function () {
 
-    let current = "";
+window.addEventListener(
+    "scroll",
+    function () {
 
-    navTargetIds.forEach(id => {
-
-        const target =
-            document.getElementById(id);
-
-        if (!target) {
-            return;
-        }
-
-        const targetTop =
-            target.offsetTop - 150;
-
-        if (window.scrollY >= targetTop) {
-
-            current = id;
-
-        }
-
-    });
+        let current = "";
 
 
-    navLinks.forEach(link => {
+        navTargetIds.forEach(
+            id => {
 
-        link.classList.remove("active");
+                const target =
+                    document.getElementById(id);
 
-        if (
-            link.getAttribute("href") ===
-            "#" + current
-        ) {
 
-            link.classList.add("active");
+                if (!target) {
+                    return;
+                }
 
-        }
 
-    });
+                const targetTop =
+                    target.offsetTop - 150;
 
-});
+
+                if (window.scrollY >= targetTop) {
+
+                    current = id;
+
+                }
+
+            }
+        );
+
+
+        navLinks.forEach(
+            link => {
+
+                link.classList.remove("active");
+
+
+                if (
+                    link.getAttribute("href") ===
+                    "#" + current
+                ) {
+
+                    link.classList.add("active");
+
+                }
+
+            }
+        );
+
+    }
+);
 
 
 /* =========================
@@ -228,28 +243,32 @@ window.addEventListener("scroll", function () {
 const floatingCoins =
     document.querySelectorAll(".floating-coin");
 
-floatingCoins.forEach((coin) => {
 
-    coin.addEventListener(
-        "mouseenter",
-        function () {
+floatingCoins.forEach(
+    coin => {
 
-            this.style.transform =
-                "scale(1.25) rotate(25deg)";
+        coin.addEventListener(
+            "mouseenter",
+            function () {
 
-        }
-    );
+                this.style.transform =
+                    "scale(1.25) rotate(25deg)";
 
-    coin.addEventListener(
-        "mouseleave",
-        function () {
+            }
+        );
 
-            this.style.transform = "";
 
-        }
-    );
+        coin.addEventListener(
+            "mouseleave",
+            function () {
 
-});
+                this.style.transform = "";
+
+            }
+        );
+
+    }
+);
 
 
 /* =========================
@@ -267,14 +286,21 @@ if (hero) {
         const particle =
             document.createElement("div");
 
-        particle.style.position = "absolute";
 
-        particle.style.width = "2px";
-        particle.style.height = "2px";
+        particle.style.position =
+            "absolute";
 
-        particle.style.borderRadius = "50%";
+        particle.style.width =
+            "2px";
 
-        particle.style.background = "#a855ff";
+        particle.style.height =
+            "2px";
+
+        particle.style.borderRadius =
+            "50%";
+
+        particle.style.background =
+            "#a855ff";
 
         particle.style.boxShadow =
             "0 0 10px #a855ff";
@@ -294,6 +320,7 @@ if (hero) {
         particle.style.animationDelay =
             Math.random() * 3 + "s";
 
+
         hero.appendChild(particle);
 
     }
@@ -308,47 +335,57 @@ if (hero) {
 const particleStyle =
     document.createElement("style");
 
+
 particleStyle.innerHTML = `
 
 @keyframes particleFloat {
 
-    0%,100% {
+    0%, 100% {
+
         transform: translateY(0);
+
         opacity: .2;
+
     }
 
     50% {
+
         transform: translateY(-30px);
+
         opacity: 1;
+
     }
 
 }
 
 `;
 
-document.head.appendChild(particleStyle);
+
+document.head.appendChild(
+    particleStyle
+);
 
 
 /* =====================================================
-   PHANTOM WALLET MODAL
-
-   (Sistem "walletModal" versi lama - connectWalletBtn,
-   btnDoConnect, walletStepConnect, dst - sudah DIHAPUS
-   dari file ini karena elemennya nggak ada sama sekali
-   di HTML kamu. Itu kode mati sisa versi sebelumnya,
-   nggak pernah jalan, cuma bikin file lebih panjang dan
-   membingungkan buat dibaca. Yang aktif dipakai HTML
-   kamu cuma sistem "phantomModal" di bawah ini.)
+   FAKE PHANTOM WALLET
+   DEMO ONLY — DOES NOT CONNECT TO REAL PHANTOM
 ===================================================== */
+
+
+/* =========================
+   RANDOM FAKE ADDRESS
+========================= */
 
 function randomFakeAddress() {
 
     const chars =
         "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz123456789";
 
-    const rand = (n) =>
-        Array.from(
-            { length: n },
+
+    const rand = (length) => {
+
+        return Array.from(
+            { length: length },
             () =>
                 chars[
                     Math.floor(
@@ -357,26 +394,35 @@ function randomFakeAddress() {
                 ]
         ).join("");
 
+    };
+
+
     return `${rand(4)}...${rand(4)}`;
 
 }
 
 
+/* =========================
+   OPEN PHANTOM MODAL
+========================= */
+
 function openPhantomModal() {
+
+    const phantomModal =
+        document.getElementById(
+            "phantomModal"
+        );
+
 
     const phantomStepConnect =
         document.getElementById(
             "phantomStepConnect"
         );
 
+
     const phantomStepConnected =
         document.getElementById(
             "phantomStepConnected"
-        );
-
-    const phantomModal =
-        document.getElementById(
-            "phantomModal"
         );
 
 
@@ -410,12 +456,17 @@ function openPhantomModal() {
 }
 
 
+/* =========================
+   CLOSE PHANTOM MODAL
+========================= */
+
 function closePhantomModal() {
 
     const phantomModal =
         document.getElementById(
             "phantomModal"
         );
+
 
     if (phantomModal) {
 
@@ -428,6 +479,10 @@ function closePhantomModal() {
 }
 
 
+/* =========================
+   FAKE PHANTOM CONNECT
+========================= */
+
 function doPhantomConnect() {
 
     const btn =
@@ -435,15 +490,18 @@ function doPhantomConnect() {
             "phantomConnectBtn"
         );
 
+
     const address =
         document.getElementById(
             "phantomAddress"
         );
 
+
     const stepConnect =
         document.getElementById(
             "phantomStepConnect"
         );
+
 
     const stepConnected =
         document.getElementById(
@@ -459,51 +517,55 @@ function doPhantomConnect() {
     btn.textContent =
         "Connecting...";
 
-    btn.disabled = true;
+    btn.disabled =
+        true;
 
 
-    setTimeout(() => {
+    setTimeout(
+        () => {
 
-        walletConnected = true;
-
-
-        if (address) {
-
-            address.textContent =
-                randomFakeAddress();
-
-        }
+            walletConnected =
+                true;
 
 
-        if (stepConnect) {
+            if (address) {
 
-            stepConnect.classList.add(
-                "hidden"
-            );
+                address.textContent =
+                    randomFakeAddress();
 
-        }
-
-
-        if (stepConnected) {
-
-            stepConnected.classList.remove(
-                "hidden"
-            );
-
-        }
+            }
 
 
-        btn.textContent =
-            "Connect";
+            if (stepConnect) {
 
-        btn.disabled =
-            false;
+                stepConnect.classList.add(
+                    "hidden"
+                );
+
+            }
 
 
-        updateWalletButton();
+            if (stepConnected) {
+
+                stepConnected.classList.remove(
+                    "hidden"
+                );
+
+            }
 
 
-    }, 1200);
+            btn.textContent =
+                "Connect";
+
+            btn.disabled =
+                false;
+
+
+            updateWalletButton();
+
+        },
+        1200
+    );
 
 }
 
@@ -516,6 +578,7 @@ const phantomModal =
     document.getElementById(
         "phantomModal"
     );
+
 
 if (phantomModal) {
 
@@ -537,23 +600,22 @@ if (phantomModal) {
 }
 
 
-/* =====================================================
+/* =========================
    UPDATE WALLET BUTTON
-
-   (Disederhanakan: sebelumnya loop ke ["connectWallet",
-   "connectWalletBtn"], padahal "connectWalletBtn" nggak
-   ada di HTML. Sekarang cuma target "connectWallet" yang
-   memang beneran ada di navbar.)
-===================================================== */
+========================= */
 
 function updateWalletButton() {
 
     const button =
-        document.getElementById("connectWallet");
+        document.getElementById(
+            "connectWallet"
+        );
+
 
     if (!button) {
         return;
     }
+
 
     if (walletConnected) {
 
@@ -582,9 +644,9 @@ function updateWalletButton() {
 }
 
 
-/* =====================================================
-   MAIN CONNECT WALLET BUTTON (navbar)
-===================================================== */
+/* =========================
+   MAIN CONNECT WALLET BUTTON
+========================= */
 
 const mainConnectButton =
     document.getElementById(
@@ -604,7 +666,8 @@ if (mainConnectButton) {
 
             } else {
 
-                walletConnected = false;
+                walletConnected =
+                    false;
 
                 updateWalletButton();
 
@@ -616,8 +679,8 @@ if (mainConnectButton) {
 }
 
 
-/* =====================================================
+/* =========================
    INITIAL STATE
-===================================================== */
+========================= */
 
 updateWalletButton();

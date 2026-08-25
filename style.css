@@ -1418,7 +1418,7 @@ footer {
 }
 
 .wallet-step.hidden { display: none; }
-}
+
 .phantom-modal {
     position: fixed;
     inset: 0;
