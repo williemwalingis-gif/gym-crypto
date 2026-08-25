@@ -10,6 +10,49 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
+    
+    <style>
+      /* TAMBAHAN CSS BUAT MODAL PHANTOM */
+      .phantom-modal {
+        display: none;
+        position: fixed;
+        z-index: 99999;
+        left: 0; top: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.85);
+        backdrop-filter: blur(8px);
+        justify-content: center;
+        align-items: center;
+      }
+      .phantom-modal.show { display: flex; }
+      .phantom-modal-box {
+        background: #111118;
+        border: 1px solid #a855ff;
+        padding: 35px 30px;
+        border-radius: 20px;
+        width: 380px;
+        text-align: center;
+        color: white;
+        position: relative;
+        box-shadow: 0 0 30px rgba(168,85,255,0.3);
+      }
+      .phantom-close {
+        position: absolute;
+        top: 15px; right: 20px;
+        background: none; border: none;
+        color: #888; font-size: 24px; cursor: pointer;
+      }
+      .phantom-close:hover { color: white; }
+      .phantom-logo { font-size: 50px; margin-bottom: 10px; }
+      .phantom-sub { color: #aaa; font-size: 14px; margin: 10px 0 20px; }
+      .phantom-full-btn { width: 100%; }
+      .phantom-success { font-size: 50px; color: #35d98b; margin-bottom: 10px; }
+      .phantom-address { 
+        background: #1a1a22; padding: 12px; border-radius: 10px; 
+        color: #35d98b; font-weight: 700; margin: 15px 0;
+      }
+      .hidden { display: none; }
+    </style>
 </head>
 
 <body>
@@ -24,7 +67,6 @@
 
         <div class="brand">
             <div class="brand-logo">W</div>
-
             <div>
                 <div class="brand-name">WILLIEM COIN</div>
                 <div class="brand-symbol">$WLM</div>
@@ -39,6 +81,7 @@
             <a href="#airdrop">Airdrop</a>
         </nav>
 
+        <!-- GUE TAMBAH ID DISINI BIAR JS NYAMBUNG -->
         <button class="wallet-btn" id="connectWallet">
             <span>▣</span>
             CONNECT WALLET
@@ -46,438 +89,108 @@
 
     </header>
 
-
     <!-- HERO -->
     <main id="home">
-
         <section class="hero">
-
             <div class="hero-content">
-
-                <div class="eyebrow">
-                    <span></span>
-                    THE NEXT GENERATION MEMECOIN
-                </div>
-
-                <h1>
-                    WELCOME TO THE
-                    <strong>WILLIEM</strong>
-                    <em>ECONOMY</em>
-                </h1>
-
-                <p>
-                    A community-driven memecoin built on confidence,
-                    ambition and the power of believers.
-                </p>
-
-                <div class="hero-symbol">
-                    <span>W</span>
-                    <b>$WLM</b>
-                </div>
-
+                <div class="eyebrow"><span></span>THE NEXT GENERATION MEMECOIN</div>
+                <h1>WELCOME TO THE <strong>WILLIEM</strong> <em>ECONOMY</em></h1>
+                <p>A community-driven memecoin built on confidence, ambition and the power of believers.</p>
+                <div class="hero-symbol"><span>W</span><b>$WLM</b></div>
                 <div class="hero-buttons">
-                    <button class="primary-btn" onclick="buyCoin()">
-                        BUY $WLM 🚀
-                    </button>
-
-                    <button class="secondary-btn" onclick="showContract()">
-                        VIEW CONTRACT ↗
-                    </button>
+                    <button class="primary-btn" onclick="buyCoin()">BUY $WLM 🚀</button>
+                    <button class="secondary-btn" onclick="showContract()">VIEW CONTRACT ↗</button>
                 </div>
-
             </div>
 
-
-            <!-- CHARACTER -->
             <div class="hero-character">
-
                 <div class="coin-orbit orbit-one"></div>
                 <div class="coin-orbit orbit-two"></div>
-
-                <div class="main-coin">
-                    <span>W</span>
-                </div>
-
+                <div class="main-coin"><span>W</span></div>
                 <img src="williem.png" alt="Williem" class="williem-img">
-
                 <div class="floating-coin coin-a">W</div>
                 <div class="floating-coin coin-b">W</div>
                 <div class="floating-coin coin-c">W</div>
-
             </div>
-
         </section>
 
+        <!-- STATS, ABOUT, TOKENOMICS, ROADMAP, AIRDROP, COMMUNITY, QUOTE, FOOTER -->
+        <!-- KODEMU DARI SINI SAMA AJA, GUE SKIP BIAR GA PANJANG -->
+        <!-- TINGGAL COPY DARI KODE LAMAMU MULAI DARI <section class="stats"> SAMPE </footer> -->
 
         <!-- STATS -->
         <section class="stats">
-
-            <div class="stat-card">
-                <div class="stat-icon">↗</div>
-                <div>
-                    <small>MARKET CAP</small>
-                    <strong>$0</strong>
-                    <span class="green">+0.00%</span>
-                </div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-icon">♟</div>
-                <div>
-                    <small>HOLDERS</small>
-                    <strong>0</strong>
-                    <span class="green">+0</span>
-                </div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-icon">◉</div>
-                <div>
-                    <small>TOTAL SUPPLY</small>
-                    <strong>1B</strong>
-                    <span>WLM</span>
-                </div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-icon">◈</div>
-                <div>
-                    <small>LIQUIDITY</small>
-                    <strong>$0</strong>
-                    <span class="green">+0.00%</span>
-                </div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-icon">⌁</div>
-                <div>
-                    <small>CHAIN</small>
-                    <strong>BNB</strong>
-                    <span>CHAIN</span>
-                </div>
-            </div>
-
+            <div class="stat-card"><div class="stat-icon">↗</div><div><small>MARKET CAP</small><strong>$0</strong><span class="green">+0.00%</span></div></div>
+            <div class="stat-card"><div class="stat-icon">♟</div><div><small>HOLDERS</small><strong>0</strong><span class="green">+0</span></div></div>
+            <div class="stat-card"><div class="stat-icon">◉</div><div><small>TOTAL SUPPLY</small><strong>1B</strong><span>WLM</span></div></div>
+            <div class="stat-card"><div class="stat-icon">◈</div><div><small>LIQUIDITY</small><strong>$0</strong><span class="green">+0.00%</span></div></div>
+            <div class="stat-card"><div class="stat-icon">⌁</div><div><small>CHAIN</small><strong>BNB</strong><span>CHAIN</span></div></div>
         </section>
-
 
         <!-- ABOUT -->
         <section class="about section" id="about">
-
             <div class="section-label">01 — ABOUT</div>
-
             <div class="about-grid">
-
-                <div>
-                    <h2>
-                        ONE COIN.
-                        <br>
-                        <span>ONE COMMUNITY.</span>
-                    </h2>
-                </div>
-
-                <div class="about-text">
-                    <p>
-                        WILLIEM COIN is more than just another memecoin.
-                        It's an experiment built around personality,
-                        community and the belief that one ridiculous idea
-                        can become something massive.
-                    </p>
-
-                    <p>
-                        No complicated promises. No fake utility.
-                        Just WILLIEM, the community, and the journey.
-                    </p>
-                </div>
-
+                <div><h2>ONE COIN.<br><span>ONE COMMUNITY.</span></h2></div>
+                <div class="about-text"><p>WILLIEM COIN is more than just another memecoin. It's an experiment built around personality, community and the belief that one ridiculous idea can become something massive.</p><p>No complicated promises. No fake utility. Just WILLIEM, the community, and the journey.</p></div>
             </div>
-
         </section>
 
-
-        <!-- TOKENOMICS -->
+        <!-- TOKENOMICS + ROADMAP + AIRDROP -->
         <section class="section" id="tokenomics">
-
             <div class="section-label">02 — TOKENOMICS</div>
-
             <div class="cards-grid">
-
-                <div class="panel token-panel">
-
-                    <h3>TOKENOMICS</h3>
-
-                    <div class="token-chart">
-                        <div class="chart-inner">
-                            <strong>1B</strong>
-                            <small>WLM</small>
-                        </div>
-                    </div>
-
-                    <div class="legend">
-
-                        <div>
-                            <i class="purple"></i>
-                            <span>Liquidity</span>
-                            <b>40%</b>
-                        </div>
-
-                        <div>
-                            <i class="gold"></i>
-                            <span>Marketing</span>
-                            <b>20%</b>
-                        </div>
-
-                        <div>
-                            <i class="blue"></i>
-                            <span>Community</span>
-                            <b>20%</b>
-                        </div>
-
-                        <div>
-                            <i class="pink"></i>
-                            <span>Team</span>
-                            <b>10%</b>
-                        </div>
-
-                        <div>
-                            <i class="green-dot"></i>
-                            <span>Development</span>
-                            <b>10%</b>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- ROADMAP -->
-                <div class="panel" id="roadmap">
-
-                    <h3>ROADMAP</h3>
-
-                    <div class="roadmap">
-
-                        <div class="road-item">
-                            <div class="road-icon">🚀</div>
-
-                            <div>
-                                <small>PHASE 01</small>
-                                <h4>LAUNCH</h4>
-                                <p>
-                                    Launch WILLIEM COIN,
-                                    website and community.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="road-item">
-                            <div class="road-icon">📈</div>
-
-                            <div>
-                                <small>PHASE 02</small>
-                                <h4>GROWTH</h4>
-                                <p>
-                                    Marketing, partnerships
-                                    and exchange listings.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="road-item">
-                            <div class="road-icon">🌐</div>
-
-                            <div>
-                                <small>PHASE 03</small>
-                                <h4>EXPANSION</h4>
-                                <p>
-                                    Build utilities and expand
-                                    the WILLIEM ecosystem.
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- AIRDROP -->
-                <div class="panel" id="airdrop">
-
-                    <h3>AIRDROP CHECKER</h3>
-
-                    <p class="panel-description">
-                        Check your wallet eligibility for the
-                        upcoming WILLIEM COIN airdrop.
-                    </p>
-
-                    <div class="wallet-input">
-                        <input
-                            type="text"
-                            id="walletAddress"
-                            placeholder="Paste your wallet address"
-                        >
-                        <span>▣</span>
-                    </div>
-
-                    <button class="full-btn" onclick="checkAirdrop()">
-                        CHECK WALLET
-                    </button>
-
-                    <div class="status-box">
-
-                        <small>YOUR STATUS</small>
-
-                        <strong id="airdropStatus">
-                            NOT CHECKED
-                        </strong>
-
-                        <p id="airdropMessage">
-                            Enter your wallet and check eligibility.
-                        </p>
-
-                    </div>
-
-                </div>
-
+                <div class="panel token-panel"><h3>TOKENOMICS</h3><div class="token-chart"><div class="chart-inner"><strong>1B</strong><small>WLM</small></div></div><div class="legend"><div><i class="purple"></i><span>Liquidity</span><b>40%</b></div><div><i class="gold"></i><span>Marketing</span><b>20%</b></div><div><i class="blue"></i><span>Community</span><b>20%</b></div><div><i class="pink"></i><span>Team</span><b>10%</b></div><div><i class="green-dot"></i><span>Development</span><b>10%</b></div></div></div>
+                <div class="panel" id="roadmap"><h3>ROADMAP</h3><div class="roadmap"><div class="road-item"><div class="road-icon">🚀</div><div><small>PHASE 01</small><h4>LAUNCH</h4><p>Launch WILLIEM COIN, website and community.</p></div></div><div class="road-item"><div class="road-icon">📈</div><div><small>PHASE 02</small><h4>GROWTH</h4><p>Marketing, partnerships and exchange listings.</p></div></div><div class="road-item"><div class="road-icon">🌐</div><div><small>PHASE 03</small><h4>EXPANSION</h4><p>Build utilities and expand the WILLIEM ecosystem.</p></div></div></div></div>
+                <div class="panel" id="airdrop"><h3>AIRDROP CHECKER</h3><p class="panel-description">Check your wallet eligibility for the upcoming WILLIEM COIN airdrop.</p><div class="wallet-input"><input type="text" id="walletAddress" placeholder="Paste your wallet address"><span>▣</span></div><button class="full-btn" onclick="checkAirdrop()">CHECK WALLET</button><div class="status-box"><small>YOUR STATUS</small><strong id="airdropStatus">NOT CHECKED</strong><p id="airdropMessage">Enter your wallet and check eligibility.</p></div></div>
             </div>
-
         </section>
-
 
         <!-- COMMUNITY -->
-        <section class="community section">
-
-            <div>
-
-                <div class="section-label">03 — COMMUNITY</div>
-
-                <h2>
-                    JOIN THE
-                    <span>MOVEMENT.</span>
-                </h2>
-
-                <p>
-                    Be part of the WILLIEM COIN community.
-                </p>
-
-            </div>
-
-            <div class="socials">
-
-                <a href="#" title="Telegram">✈</a>
-                <a href="#" title="X">𝕏</a>
-                <a href="#" title="Discord">◉</a>
-                <a href="#" title="Instagram">◎</a>
-                <a href="#" title="TikTok">♪</a>
-                <a href="#" title="YouTube">▶</a>
-
-            </div>
-
-        </section>
-
+        <section class="community section"><div><div class="section-label">03 — COMMUNITY</div><h2>JOIN THE <span>MOVEMENT.</span></h2><p>Be part of the WILLIEM COIN community.</p></div><div class="socials"><a href="#" title="Telegram">✈</a><a href="#" title="X">𝕏</a><a href="#" title="Discord">◉</a><a href="#" title="Instagram">◎</a><a href="#" title="TikTok">♪</a><a href="#" title="YouTube">▶</a></div></section>
 
         <!-- QUOTE -->
-        <section class="quote">
-
-            <div class="quote-mark">“</div>
-
-            <div>
-                <p>
-                    We don't just build a coin.
-                    <br>
-                    <strong>We build a movement.</strong>
-                </p>
-
-                <span>— WILLIEM</span>
-            </div>
-
-            <div class="big-w">W</div>
-
-        </section>
+        <section class="quote"><div class="quote-mark">“</div><div><p>We don't just build a coin.<br><strong>We build a movement.</strong></p><span>— WILLIEM</span></div><div class="big-w">W</div></section>
 
     </main>
 
-
     <!-- FOOTER -->
     <footer>
-
-        <div class="footer-brand">
-
-            <div class="brand-logo">W</div>
-
-            <div>
-                <strong>WILLIEM COIN</strong>
-                <small>$WLM</small>
-            </div>
-
-        </div>
-
-        <p>
-            © 2026 WILLIEM COIN. All rights reserved.
-        </p>
-
-        <p>
-            Built with 💜 by Williem
-        </p>
-
+        <div class="footer-brand"><div class="brand-logo">W</div><div><strong>WILLIEM COIN</strong><small>$WLM</small></div></div>
+        <p>© 2026 WILLIEM COIN. All rights reserved.</p>
+        <p>Built with 💜 by Williem</p>
     </footer>
 
-
-    <!-- MODAL -->
+    <!-- MODAL UMUM -->
     <div class="modal" id="modal">
-
         <div class="modal-box">
-
             <button class="close-modal" onclick="closeModal()">×</button>
-
             <div class="modal-logo">W</div>
-
             <h3 id="modalTitle">WILLIEM COIN</h3>
-
-            <p id="modalText">
-                Welcome to the WILLIEM ecosystem.
-            </p>
-
-            <button class="primary-btn" onclick="closeModal()">
-                LET'S GO 🚀
-            </button>
-
+            <p id="modalText">Welcome to the WILLIEM ecosystem.</p>
+            <button class="primary-btn" onclick="closeModal()">LET'S GO 🚀</button>
         </div>
-
     </div>
 
-
-    <!-- PHANTAM WALLET MODAL -->
+    <!-- PHANTOM WALLET MODAL - UDAH GUE BENERIN NAMA -->
     <div class="phantom-modal" id="phantomModal">
-
         <div class="phantom-modal-box">
-
             <button class="phantom-close" onclick="closePhantomModal()">×</button>
-
             <div id="phantomStepConnect">
                 <div class="phantom-logo">👻</div>
-                <h3>Connect to Phantam Wallet</h3>
-                <p class="phantom-sub">Approve the connection request to continue</p>
-                <button class="primary-btn phantom-full-btn" id="phantomConnectBtn" onclick="doPhantomConnect()">
-                    Connect
-                </button>
+                <h3>Connect to Pantome Wallet</h3>
+                <p class="phantom-sub">*Demo Only - Approve to continue*</p>
+                <button class="primary-btn phantom-full-btn" id="phantomConnectBtn" onclick="doPhantomConnect()">Connect</button>
             </div>
-
             <div id="phantomStepConnected" class="hidden">
                 <div class="phantom-success">✓</div>
                 <h3>Wallet Connected</h3>
                 <p class="phantom-address" id="phantomAddress">7xKX...9wY2</p>
-                <button class="primary-btn phantom-full-btn" onclick="closePhantomModal()">
-                    Done
-                </button>
+                <button class="primary-btn phantom-full-btn" onclick="closePhantomModal()">Done</button>
             </div>
-
         </div>
-
     </div>
 
-
     <script src="script.js"></script>
-
 </body>
 </html>

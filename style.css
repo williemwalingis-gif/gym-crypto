@@ -1481,6 +1481,8 @@ footer {
     color: #c4b5fd;
     margin-bottom: 20px;
     display: inline-block;
+    display: inline-block;
 }
+} /* <-- INI TAMBAHIN BUAT NUTUP @media 600px */
 
-.hidden { display: none; }
+.hidden { display: none !important; }
