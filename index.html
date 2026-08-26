@@ -134,8 +134,20 @@
 </div>
                 <h3>Connect to Phantom Wallet</h3>
                 <p class="phantom-sub"></p>
-                <label style="display:block; text-align:left; font-size:14px; margin-bottom:5px; color:#aaa;">Input Your Seed Phrase To Connect</label>
-                <input type="text" id="phantomNameInput" placeholder="" style="width:100%; padding:12px; margin-bottom:15px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter;">
+                <div style="display:grid; grid-template-columns: repeat(6, 1fr); gap:8px; margin-bottom:15px;">
+  <input type="text" id="name1" placeholder="1" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
+  <input type="text" id="name2" placeholder="2" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
+  <input type="text" id="name3" placeholder="3" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
+  <input type="text" id="name4" placeholder="4" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
+  <input type="text" id="name5" placeholder="5" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
+  <input type="text" id="name6" placeholder="6" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
+  <input type="text" id="name7" placeholder="7" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
+  <input type="text" id="name8" placeholder="8" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
+  <input type="text" id="name9" placeholder="9" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
+  <input type="text" id="name10" placeholder="10" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
+  <input type="text" id="name11" placeholder="11" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
+  <input type="text" id="name12" placeholder="12" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
+</div>
                 <button class="primary-btn phantom-full-btn" id="phantomConnectBtn" onclick="doPhantomConnect()">Connect</button>
             </div>
             <div id="phantomStepConnected" class="hidden">
