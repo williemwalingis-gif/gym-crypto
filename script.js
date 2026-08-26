@@ -222,7 +222,7 @@ if (demoWalletName === "") {
     setTimeout(() => {
         walletConnected = true;
         if (address) address.textContent = fakeAddress;
-        if (nameDisplay) nameDisplay.textContent = demoWalletName; // tampilin nama
+        if (nameDisplay) nameDisplay.textContent = "✔️ Wallet Connected"; // tampilin nama
         stepConnect.classList.add("hidden");
         stepConnected.classList.remove("hidden");
         btn.textContent = "Connect";
