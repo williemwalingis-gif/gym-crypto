@@ -262,7 +262,7 @@ function updateWalletButton() {
     const button = document.getElementById("connectWallet");
     if (!button) return;
     if (walletConnected) {
-        button.innerHTML = `✓ ${demoWalletName}`; // <--- INI KUNCINYA
+        button.innerHTML = `✔️ Wallet Connected`;// <--- INI KUNCINYA
         button.style.borderColor = "#35d98b";
         button.style.color = "#35d98b";
     } else {
