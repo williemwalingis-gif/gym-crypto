@@ -195,7 +195,7 @@ window.doPhantomConnect = function() {
 
     demoWalletName = nameInput.value.trim();
     if (demoWalletName === "") {
-        alert("Isi nama dulu bro 😅");
+        alert("Please connect to Phantom Wallet to Continue");
         return;
     }
 
