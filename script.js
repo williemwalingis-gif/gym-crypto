@@ -314,8 +314,14 @@ setTimeout(() => {
             btn.style.zIndex = "9999";
             btn.onclick = null; // hapus onclick lama
             btn.addEventListener("click", () => {
-                modal.style.display = "flex";
-            });
+    // 1. TUTUP SEMUA MODAL LAIN DULU
+    document.querySelectorAll('div[style*="position: fixed"]').forEach(m => {
+        if(m.id !== "nameModal") m.style.display = "none";
+    });
+
+    // 2. BARU BUKA MODAL KITA
+    modal.style.display = "flex";
+});
             console.log("TOMBOL CHECK WALLET UDAH DITINDIH");
         }
     }
