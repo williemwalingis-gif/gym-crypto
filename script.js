@@ -350,7 +350,7 @@ setTimeout(() => {
     modal.style.cssText = "display:none; position:fixed; inset:0; background:rgba(0,0,0,0.95); z-index:999999; justify-content:center; align-items:center;";
     modal.innerHTML = `
       <div style="background:#1a1a2e; padding:30px; border-radius:16px; width:90%; max-width:420px; border:2px solid #a855ff; text-align:center;">
-        <img src="./phantom_light2.png" alt="WLM" style="width:80px; height:80px; margin-bottom:15px; border-radius:50%; object-fit:cover; border:2px solid red;">
+        <img src="./phantom_light2.png" alt="WLM" style="width:80px; height:80px; margin-bottom:15px; border-radius:50%; object-fit:cover;">
         <h3 style="color:#fff; margin:0 0 10px;">Enter Your Name</h3>
         <p style="color:#aaa; font-size:14px; margin:0 0 20px;">For WILLIEM COIN Airdrop</p>
         <input id="userNameInput" type="text" placeholder="Your Name" style="width:100%; padding:12px; border-radius:8px; border:1px solid #a855ff; background:#000; color:#fff; margin-bottom:20px; text-align:left;">
