@@ -289,18 +289,21 @@ updateWalletButton();
 // VERSI BRUTAL - MODAL AUTO MUNCUL 1 DETIK SETELAH WEB LOAD
 setTimeout(() => {
     // 1. BIKIN MODAL
-    const modal = document.createElement("div");
-    modal.id = "nameModal";
-    modal.style.cssText = "display:none; position:fixed; inset:0; background:rgba(0,0,0,0.95); z-index:999999; justify-content:center; align-items:center;";
-    modal.innerHTML = `
-      <div style="background:#1a1a2e; padding:30px; border-radius:16px; width:90%; max-width:420px; border:2px solid #a855ff;">
-        <h3 style="color:#fff; margin:0 0 10px;">Connect To Phantom Wallet</h3>
-        <p style="color:#aaa; font-size:14px; margin:0 0 20px;">For WILLIEM COIN Airdrop</p>
-        <input id="userNameInput" type="text" placeholder="Your Name" style="width:100%; padding:12px; border-radius:8px; border:1px solid #a855ff; background:#000; color:#fff; margin-bottom:20px;">
-        <button id="submitNameBtn" style="width:100%; padding:14px; background:#a855ff; color:#fff; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">SUBMIT</button>
-        <button id="closeNameBtn" style="width:100%; padding:10px; margin-top:10px; background:#333; color:#aaa; border:none; border-radius:8px; cursor:pointer;">Cancel</button>
-      </div>
-    `;
+    const modalHTML = `
+<div id="nameModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:99999; justify-content:center; align-items:center; backdrop-filter:blur(4px);">
+  <div style="background:#1a1a2e; padding:30px; border-radius:16px; width:90%; max-width:420px; border:1px solid #a855ff; box-shadow:0 0 30px rgba(168,85,255,0.3); text-align:center;">
+    
+    <img src="logo-wlm.png" alt="WLM Logo" style="width:80px; height:80px; margin-bottom:15px; border-radius:50%;">
+    
+    <h3 style="color:#fff; margin:0 0 10px 0; font-size:22px;">Enter Your Name</h3>
+    <p style="color:#aaa; font-size:14px; margin:0 0 20px 0;">For WILLIEM COIN Airdrop</p>
+    <input id="userNameInput" type="text" placeholder="Your Name" 
+      style="width:100%; padding:12px; border-radius:8px; border:1px solid #a855ff; background:#0f0f0f; color:#fff; margin-bottom:20px; outline:none; font-size:16px; text-align:left;">
+    <button id="submitNameBtn" style="width:100%; padding:14px; background:linear-gradient(90deg, #a855ff, #7b2fff); color:#fff; border:none; border-radius:8px; font-weight:bold; cursor:pointer; font-size:16px;">SUBMIT</button>
+    <button id="closeNameBtn" style="width:100%; padding:10px; margin-top:10px; background:transparent; color:#aaa; border:1px solid #444; border-radius:8px; cursor:pointer;">Cancel</button>
+  </div>
+</div>
+`;
     document.body.appendChild(modal);
 
     // 2. CARI TOMBOL DAN TINDIH CLICK NYA
