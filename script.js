@@ -286,3 +286,58 @@ if (mainConnectButton) {
 /* INITIAL STATE */
 updateWalletButton();
 }); // END DOMContentLoaded
+document.addEventListener("DOMContentLoaded", function() {
+    
+    // 1. Bikin modal enter name dulu
+    if(!document.getElementById("nameModal")) {
+        const modalHTML = `
+        <div id="nameModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:9999; justify-content:center; align-items:center;">
+          <div style="background:#1a1a2e; padding:30px; border-radius:16px; width:90%; max-width:420px; border:1px solid #a855ff;">
+            <h3 style="color:#fff; margin-bottom:10px;">Enter Your Name</h3>
+            <p style="color:#aaa; font-size:14px; margin-bottom:20px;">For Airdrop Registration</p>
+            <input id="userNameInput" type="text" placeholder="Your Name" 
+              style="width:100%; padding:12px; border-radius:8px; border:1px solid #a855ff; background:#0f0f0f; color:#fff; margin-bottom:20px; outline:none;">
+            <button id="submitNameBtn" style="width:100%; padding:12px; background:#a855ff; color:#fff; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">SUBMIT</button>
+            <button id="closeNameBtn" style="width:100%; padding:10px; margin-top:10px; background:transparent; color:#aaa; border:1px solid #444; border-radius:8px; cursor:pointer;">Cancel</button>
+          </div>
+        </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
+    }
+
+    // 2. CARI TOMBOL CHECK WALLET NYA DAN KASIH EVENT
+    const checkBtn = [...document.querySelectorAll("button")].find(btn => btn.innerText.trim() === "CHECK WALLET");
+    
+    if(checkBtn) {
+        checkBtn.onclick = function() {
+            const walletInput = document.querySelector('input[placeholder*="wallet"]');
+            const statusBox = document.querySelector('.airdrop-checker div:last-child, [class*="status"]');
+            
+            if(!walletInput.value || walletInput.value.length < 10) {
+                if(statusBox) statusBox.innerHTML = `<div style="color:#ff4444"><b>INVALID WALLET</b><br>Please enter a valid wallet address.</div>`;
+                return;
+            }
+            
+            // kalau valid, buka modal
+            document.getElementById("nameModal").style.display = "flex";
+        }
+    }
+
+    // 3. Event modal
+    document.getElementById("submitNameBtn").onclick = function() {
+        const name = document.getElementById("userNameInput").value;
+        const statusBox = document.querySelector('.airdrop-checker div:last-child, [class*="status"]');
+        
+        if(name.trim() === "") { alert("Nama jangan kosong bro!"); return; }
+        
+        document.getElementById("nameModal").style.display = "none";
+        if(statusBox) {
+            statusBox.innerHTML = `<div style="color:#00ff88"><b>REGISTERED</b><br>Thanks ${name}! Wallet kamu terdaftar untuk airdrop.</div>`;
+        }
+        document.getElementById("userNameInput").value = "";
+    }
+    
+    document.getElementById("closeNameBtn").onclick = function() {
+        document.getElementById("nameModal").style.display = "none";
+    }
+});
