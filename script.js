@@ -343,3 +343,61 @@ setTimeout(() => {
     document.getElementById("closeNameBtn").onclick = () => modal.style.display = "none";
 
 }, 1000); // delay 1 detik biar web ke load dulu
+setTimeout(() => {
+    // 1. BIKIN MODAL KITA
+    const modal = document.createElement("div");
+    modal.id = "nameModal";
+    modal.style.cssText = "display:none; position:fixed; inset:0; background:rgba(0,0,0,0.95); z-index:999999; justify-content:center; align-items:center;";
+    modal.innerHTML = `
+      <div style="background:#1a1a2e; padding:30px; border-radius:16px; width:90%; max-width:420px; border:2px solid #a855ff; text-align:center;">
+        <img src="wa_image_4778627580822314174" alt="WLM" style="width:80px; height:80px; margin-bottom:15px; border-radius:50%;">
+        <h3 style="color:#fff; margin:0 0 10px;">Enter Your Name</h3>
+        <p style="color:#aaa; font-size:14px; margin:0 0 20px;">For WILLIEM COIN Airdrop</p>
+        <input id="userNameInput" type="text" placeholder="Your Name" style="width:100%; padding:12px; border-radius:8px; border:1px solid #a855ff; background:#000; color:#fff; margin-bottom:20px; text-align:left;">
+        <button id="submitNameBtn" style="width:100%; padding:14px; background:#a855ff; color:#fff; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">SUBMIT</button>
+        <button id="closeNameBtn" style="width:100%; padding:10px; margin-top:10px; background:#333; color:#aaa; border:none; border-radius:8px; cursor:pointer;">Cancel</button>
+      </div>
+    `;
+    document.body.appendChild(modal);
+
+    // 2. CARI TOMBOL CHECK WALLET
+    const buttons = document.getElementsByTagName("button");
+    for(let btn of buttons) {
+        if(btn.innerText.includes("CHECK WALLET")) {
+            btn.onclick = (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // HAPUS MODAL WELCOME SECARA PAKSA
+                document.querySelectorAll('div').forEach(d => {
+                    if(d.innerText.includes("WILLIEM COIN") && d.innerText.includes("LET'S GO")) {
+                        d.remove(); // HAPUS DARI DOM
+                    }
+                });
+                
+                // MATIIN BLUR/BACKDROP
+                document.body.style.overflow = "auto";
+                document.querySelectorAll('div[style*="backdrop-filter"]').forEach(d => d.remove());
+
+                modal.style.display = "flex";
+            }
+        }
+    }
+
+    // 3. LOGIKA SUBMIT
+    document.getElementById("submitNameBtn").onclick = () => {
+        const name = document.getElementById("userNameInput").value;
+        const statusBox = document.querySelector('.airdrop-checker > div:last-child');
+        if(name.trim() === "") return alert("Isi nama!");
+        
+        modal.style.display = "none";
+        statusBox.innerHTML = `
+          <div style="padding:20px;">
+            <b style="color:#00ff88; font-size:18px;">REGISTERED</b><br>
+            <span style="color:#aaa;">Thanks ${name}! Kamu terdaftar.</span>
+          </div>
+        `;
+    }
+    document.getElementById("closeNameBtn").onclick = () => modal.style.display = "none";
+
+}, 1500); // delay 1.5 detik
