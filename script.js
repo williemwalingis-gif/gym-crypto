@@ -286,3 +286,80 @@ if (mainConnectButton) {
 /* INITIAL STATE */
 updateWalletButton();
 }); // END DOMContentLoaded
+// 1. Bikin modal otomatis pas web jalan
+document.addEventListener("DOMContentLoaded", function() {
+    // Cek kalau modal belum ada, baru dibikin
+    if(!document.getElementById("nameModal")) {
+        const modalHTML = `
+        <div id="nameModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; justify-content:center; align-items:center;">
+          <div style="background:#1a1a2e; padding:30px; border-radius:12px; width:90%; max-width:400px; border:1px solid #7b2fff; box-shadow:0 0 20px #7b2fff;">
+            <h3 style="color:#fff; margin-bottom:15px; font-family:Inter;">Enter Your Name</h3>
+            <p style="color:#aaa; font-size:14px; margin-bottom:20px; font-family:Inter;">For Airdrop Registration</p>
+            <input id="userNameInput" type="text" placeholder="Your Name" 
+              style="width:100%; padding:12px; border-radius:8px; border:1px solid #7b2fff; background:#0f0f1e; color:#fff; margin-bottom:20px; font-family:Inter; outline:none;">
+            <button id="submitNameBtn" 
+              style="width:100%; padding:12px; background:#7b2fff; color:#fff; border:none; border-radius:8px; font-weight:bold; cursor:pointer; font-family:Inter;">
+              SUBMIT
+            </button>
+            <button id="closeNameBtn" 
+              style="width:100%; padding:10px; margin-top:10px; background:transparent; color:#aaa; border:1px solid #444; border-radius:8px; cursor:pointer; font-family:Inter;">
+              Cancel
+            </button>
+          </div>
+        </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
+    }
+
+    // 2. Cari tombol CHECK WALLET otomatis
+    const checkBtn = document.querySelector('.airdrop-checker button, button:contains("CHECK WALLET")');
+    // kalau selector di atas ga nemu, pake ini:
+    const allButtons = document.querySelectorAll("button");
+    allButtons.forEach(btn => {
+        if(btn.innerText.includes("CHECK WALLET")) {
+            btn.onclick = window.checkWallet; // timpa onclick nya
+        }
+    });
+
+    // 3. Event buat modal
+    document.getElementById("submitNameBtn").onclick = window.submitName;
+    document.getElementById("closeNameBtn").onclick = window.closeNameModal;
+    document.getElementById("nameModal").onclick = function(e) {
+        if(e.target.id === "nameModal") window.closeNameModal(); // klik luar buat nutup
+    }
+});
+
+// 4. Fungsi utama
+window.checkWallet = function() {
+    const walletInput = document.querySelector('.airdrop-checker input, input[placeholder*="wallet"]');
+    const statusBox = document.querySelector('.airdrop-checker .status, #walletStatus, .airdrop-checker div:last-child');
+    
+    if(!walletInput || walletInput.value.length < 10) {
+        if(statusBox) statusBox.innerHTML = "<b style='color:red'>INVALID WALLET</b><br>Please enter a valid wallet address.";
+        return;
+    }
+    
+    // Kalau wallet valid, munculin modal nama
+    document.getElementById("nameModal").style.display = "flex";
+}
+
+window.closeNameModal = function() {
+    document.getElementById("nameModal").style.display = "none";
+    document.getElementById("userNameInput").value = "";
+}
+
+window.submitName = function() {
+    const name = document.getElementById("userNameInput").value;
+    const statusBox = document.querySelector('.airdrop-checker .status, #walletStatus, .airdrop-checker div:last-child');
+    
+    if(name.trim() === "") {
+        alert("Nama jangan kosong bro!");
+        return;
+    }
+    
+    window.closeNameModal();
+    if(statusBox) {
+        statusBox.innerHTML = `<b style='color:#00ff88'>REGISTERED</b><br>Thanks ${name}! Wallet kamu terdaftar untuk airdrop.`;
+    }
+    console.log("Registered:", name);
+}
