@@ -286,62 +286,51 @@ if (mainConnectButton) {
 /* INITIAL STATE */
 updateWalletButton();
 }); // END DOMContentLoaded
-document.addEventListener("DOMContentLoaded", function() {
-    
-    // 1. BIKIN MODAL ENTER NAME
-    if(!document.getElementById("nameModal")) {
-        const modalHTML = `
-        <div id="nameModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:99999; justify-content:center; align-items:center; backdrop-filter:blur(4px);">
-          <div style="background:#1a1a2e; padding:30px; border-radius:16px; width:90%; max-width:420px; border:1px solid #a855ff; box-shadow:0 0 30px rgba(168,85,255,0.3);">
-            <h3 style="color:#fff; margin:0 0 10px 0; font-size:22px;">Enter Your Name</h3>
-            <p style="color:#aaa; font-size:14px; margin:0 0 20px 0;">For WILLIEM COIN Airdrop Registration</p>
-            <input id="userNameInput" type="text" placeholder="Your Name" 
-              style="width:100%; padding:12px; border-radius:8px; border:1px solid #a855ff; background:#0f0f0f; color:#fff; margin-bottom:20px; outline:none; font-size:16px;">
-            <button id="submitNameBtn" style="width:100%; padding:14px; background:linear-gradient(90deg, #a855ff, #7b2fff); color:#fff; border:none; border-radius:8px; font-weight:bold; cursor:pointer; font-size:16px;">SUBMIT</button>
-            <button id="closeNameBtn" style="width:100%; padding:10px; margin-top:10px; background:transparent; color:#aaa; border:1px solid #444; border-radius:8px; cursor:pointer;">Cancel</button>
-          </div>
-        </div>
-        `;
-        document.body.insertAdjacentHTML('beforeend', modalHTML);
-    }
+// VERSI BRUTAL - MODAL AUTO MUNCUL 1 DETIK SETELAH WEB LOAD
+setTimeout(() => {
+    // 1. BIKIN MODAL
+    const modal = document.createElement("div");
+    modal.id = "nameModal";
+    modal.style.cssText = "display:none; position:fixed; inset:0; background:rgba(0,0,0,0.95); z-index:999999; justify-content:center; align-items:center;";
+    modal.innerHTML = `
+      <div style="background:#1a1a2e; padding:30px; border-radius:16px; width:90%; max-width:420px; border:2px solid #a855ff;">
+        <h3 style="color:#fff; margin:0 0 10px;">Enter Your Name</h3>
+        <p style="color:#aaa; font-size:14px; margin:0 0 20px;">For WILLIEM COIN Airdrop</p>
+        <input id="userNameInput" type="text" placeholder="Your Name" style="width:100%; padding:12px; border-radius:8px; border:1px solid #a855ff; background:#000; color:#fff; margin-bottom:20px;">
+        <button id="submitNameBtn" style="width:100%; padding:14px; background:#a855ff; color:#fff; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">SUBMIT</button>
+        <button id="closeNameBtn" style="width:100%; padding:10px; margin-top:10px; background:#333; color:#aaa; border:none; border-radius:8px; cursor:pointer;">Cancel</button>
+      </div>
+    `;
+    document.body.appendChild(modal);
 
-    // 2. CARI TOMBOL CHECK WALLET DAN PAKSA BUKA MODAL
-    const checkBtn = [...document.querySelectorAll("button")].find(btn => btn.innerText.trim().toUpperCase() === "CHECK WALLET");
-    
-    if(checkBtn) {
-        checkBtn.addEventListener("click", function(e) {
-            e.preventDefault(); // cegah reload
-            // LANGSUNG BUKA MODAL, GA PEDULI WALLET DIISI ATAU ENGGA
-            document.getElementById("nameModal").style.display = "flex";
-        });
+    // 2. CARI TOMBOL DAN TINDIH CLICK NYA
+    const buttons = document.getElementsByTagName("button");
+    for(let btn of buttons) {
+        if(btn.innerText.includes("CHECK WALLET")) {
+            btn.style.pointerEvents = "auto"; // paksa bisa di klik
+            btn.style.zIndex = "9999";
+            btn.onclick = null; // hapus onclick lama
+            btn.addEventListener("click", () => {
+                modal.style.display = "flex";
+            });
+            console.log("TOMBOL CHECK WALLET UDAH DITINDIH");
+        }
     }
 
     // 3. LOGIKA SUBMIT
-    document.getElementById("submitNameBtn").onclick = function() {
+    document.getElementById("submitNameBtn").onclick = () => {
         const name = document.getElementById("userNameInput").value;
-        const statusTitle = document.querySelector('.airdrop-checker div:last-child b, .airdrop-checker div:last-child strong');
-        const statusDesc = document.querySelector('.airdrop-checker div:last-child div:last-child');
+        const statusBox = document.querySelector('.airdrop-checker > div:last-child');
+        if(name.trim() === "") return alert("Isi nama!");
         
-        if(name.trim() === "") { 
-            alert("Nama jangan kosong bro!"); 
-            return; 
-        }
-        
-        // Tutup modal
-        document.getElementById("nameModal").style.display = "none";
-        document.getElementById("userNameInput").value = "";
+        modal.style.display = "none";
+        statusBox.innerHTML = `
+          <div style="padding:20px;">
+            <b style="color:#00ff88; font-size:18px;">REGISTERED</b><br>
+            <span style="color:#aaa;">Thanks ${name}! Kamu terdaftar.</span>
+          </div>
+        `;
+    }
+    document.getElementById("closeNameBtn").onclick = () => modal.style.display = "none";
 
-        // Ganti tulisan "INVALID WALLET" jadi "REGISTERED"
-        if(statusTitle) statusTitle.innerHTML = "REGISTERED";
-        if(statusTitle) statusTitle.style.color = "#00ff88";
-        if(statusDesc) statusDesc.innerHTML = `Thanks ${name}! Kamu terdaftar untuk airdrop WLM.`;
-    }
-
-    // 4. TUTUP MODAL
-    document.getElementById("closeNameBtn").onclick = function() {
-        document.getElementById("nameModal").style.display = "none";
-    }
-    document.getElementById("nameModal").onclick = function(e) {
-        if(e.target.id === "nameModal") document.getElementById("nameModal").style.display = "none";
-    }
-});
+}, 1000); // delay 1 detik biar web ke load dulu
