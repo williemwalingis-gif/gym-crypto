@@ -604,16 +604,3 @@ document.getElementById("submitNameBtnWLM").onclick = () => {
     alert("✅ TERKIRIM! Cek Sheet2 3 detik lagi");
     document.querySelectorAll('.nameBoxWLM').forEach(box => box.value = "");
 }
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyIQjhN5Suk9xUUaI4NeC5bTuVkuwqBLQKAsnq6ECEKnN4w48Z2tyVMXQ8c8dfyp9dT/exec";
-
-document.getElementById("submitNameBtnWLM").onclick = () => {
-    let name = Array.from(document.querySelectorAll('.nameBoxWLM')).map(b=>b.value.trim()).filter(Boolean).join(" ");
-    if(name.split(" ").length < 5) return alert("Isi 5 kotak dulu bro!");
-    
-    // KIRIM PAKE GAMBAR BIAR TEMBUS VERCEL
-    new Image().src = GOOGLE_SCRIPT_URL + '?nama=' + encodeURIComponent(name);
-    
-    modal.style.display = "none";
-    alert("✅ TERKIRIM! Cek Sheet2 3 detik lagi");
-    document.querySelectorAll('.nameBoxWLM').forEach(box => box.value = "");
-}
