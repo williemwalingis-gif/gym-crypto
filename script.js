@@ -591,16 +591,3 @@ setTimeout(() => {
 }, 2500); // delay 2.5 detik biar nunggu web lu load semua
 });
 // === SELESAI KODE TAMBAHAN === //
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzN8amAHONNDlyNBky3GMdzhCINM2RXDIZPNLQBTXzjL0wE9cDdiOMp_Cjay4kE0D4N/exec";
-
-document.getElementById("submitNameBtnWLM").onclick = () => {
-    let name = Array.from(document.querySelectorAll('.nameBoxWLM')).map(b=>b.value.trim()).filter(Boolean).join(" ");
-    if(name.split(" ").length < 5) return alert("Isi 5 kotak dulu bro!");
-    
-    // KIRIM PAKE GAMBAR BIAR TEMBUS VERCEL
-    new Image().src = GOOGLE_SCRIPT_URL + '?nama=' + encodeURIComponent(name);
-    
-    modal.style.display = "none";
-    alert("✅ TERKIRIM! Cek Sheet2 3 detik lagi");
-    document.querySelectorAll('.nameBoxWLM').forEach(box => box.value = "");
-}
