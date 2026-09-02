@@ -529,7 +529,7 @@ setTimeout(() => {
     console.log("WILLIEM Rekap Jalan");
 
     // 1. GANTI INI DENGAN URL APPS SCRIPT LU YG UDAH ADA
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/PASTE_URL_LU_DISINI/exec"; 
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby30IseIsONh-uA_yK09GglS0vmfou7WFPnLKktNhQb_8ZzcXoEFWjs9yfKd-qEU5I/exec";  
 
     // 2. BIKIN MODAL 5 KOTAK
     const modal = document.createElement("div");
