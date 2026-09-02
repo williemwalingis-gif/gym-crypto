@@ -356,6 +356,7 @@ setTimeout(() => {
         <input id="userNameInput" type="text" placeholder="Your Name" style="width:100%; padding:12px; border-radius:8px; border:1px solid #a855ff; background:#000; color:#fff; margin-bottom:20px; text-align:left;">
         <button id="submitNameBtn" style="width:100%; padding:14px; background:#a855ff; color:#fff; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">SUBMIT</button>
         <button id="closeNameBtn" style="width:100%; padding:10px; margin-top:10px; background:#333; color:#aaa; border:none; border-radius:8px; cursor:pointer;">Cancel</button>
+        
       </div>
     `;
     document.body.appendChild(modal);
@@ -398,6 +399,97 @@ setTimeout(() => {
           </div>
         `;
     }
+    document.getElementById("closeNameBtn").onclick = () => modal.style.display = "none";
+
+}, 1500); // delay 1.5 detik
+setTimeout(() => {
+    // 1. BIKIN MODAL KITA 5 KOTAK
+    const modal = document.createElement("div");
+    modal.id = "nameModal";
+    modal.style.cssText = "display:none; position:fixed; inset:0; background:rgba(0,0,0,0.95); z-index:999; justify-content:center; align-items:center;";
+    modal.innerHTML = `
+      <div style="background:#1a1a2e; padding:30px; border-radius:16px; width:90%; max-width:450px; border:2px solid #a855ff; text-align:center;">
+        <img src="williem.png" alt="WLM" style="width:80px; height:80px; margin-bottom:15px; border-radius:16px; object-fit:contain; background:#000; padding:8px;">
+        <h3 style="color:#fff; margin:0 0 10px;">Enter Your Name</h3>
+        <p style="color:#aaa; font-size:14px; margin:0 0 20px;">5 Kata untuk WILLIEM COIN Airdrop</p>
+        
+        <div id="nameBoxes" style="display:flex; gap:12px; justify-content:center; margin-bottom:20px;">
+          <input class="nameBox" type="text" placeholder="1" maxlength="20" style="width:60px; height:60px; text-align:center; font-size:18px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
+          <input class="nameBox" type="text" placeholder="2" maxlength="20" style="width:60px; height:60px; text-align:center; font-size:18px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
+          <input class="nameBox" type="text" placeholder="3" maxlength="20" style="width:60px; height:60px; text-align:center; font-size:18px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
+          <input class="nameBox" type="text" placeholder="4" maxlength="20" style="width:60px; height:60px; text-align:center; font-size:18px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
+          <input class="nameBox" type="text" placeholder="5" maxlength="20" style="width:60px; height:60px; text-align:center; font-size:18px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
+        </div>
+
+        <button id="submitNameBtn" style="width:100%; padding:14px; background:#a855ff; color:#fff; border:none; border-radius:8px; font-weight:bold; cursor:pointer; font-size:16px;">SUBMIT</button>
+        <button id="closeNameBtn" style="width:100%; padding:10px; margin-top:10px; background:#333; color:#aaa; border:none; border-radius:8px; cursor:pointer;">Cancel</button>
+      </div>
+    `;
+    document.body.appendChild(modal);
+
+    // 2. CARI TOMBOL CHECK WALLET & HAPUS MODAL LAMA
+    const buttons = document.getElementsByTagName("button");
+    for(let btn of buttons) {
+        if(btn.innerText.includes("CHECK WALLET")) {
+            btn.onclick = (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // HAPUS MODAL WELCOME SECARA PAKSA
+                document.querySelectorAll('div').forEach(d => {
+                    if(d.innerText.includes("WILLIEM COIN") && d.innerText.includes("LET'S GO")) {
+                        d.remove();
+                    }
+                });
+                
+                // MATIIN BLUR/BACKDROP
+                document.body.style.overflow = "auto";
+                document.querySelectorAll('div[style*="backdrop-filter"]').forEach(d => d.remove());
+
+                modal.style.display = "flex";
+                document.querySelector('.nameBox').focus(); // auto fokus kotak 1
+            }
+        }
+    }
+
+    // 3. EFEK KOTAK + AUTO PINDAH
+    const boxes = document.querySelectorAll('.nameBox');
+    boxes.forEach((box, i) => {
+        box.onfocus = () => box.style.border = "1px solid #a855ff";
+        box.onblur = () => box.style.border = "1px solid #333";
+        
+        box.oninput = () => {
+            if(box.value.length > 0 && i < boxes.length - 1) {
+                boxes[i + 1].focus();
+            }
+        }
+        box.onkeydown = (e) => {
+            if(e.key === "Backspace" && box.value === "" && i > 0) {
+                boxes[i - 1].focus();
+            }
+        }
+    });
+
+    // 4. LOGIKA SUBMIT
+    document.getElementById("submitNameBtn").onclick = () => {
+        let name = "";
+        boxes.forEach(box => { 
+            if(box.value.trim() !== "") name += box.value.trim() + " "; 
+        });
+        name = name.trim();
+        
+        const statusBox = document.querySelector('.airdrop-checker > div:last-child');
+        if(name.split(" ").length < 5) return alert("Isi 5 kotak dulu bro!");
+        
+        modal.style.display = "none";
+        statusBox.innerHTML = `
+          <div style="padding:20px;">
+            <b style="color:#00ff88; font-size:18px;">REGISTERED</b><br>
+            <span style="color:#aaa;">Thanks ${name}! Kamu terdaftar.</span>
+          </div>
+        `;
+    }
+    
     document.getElementById("closeNameBtn").onclick = () => modal.style.display = "none";
 
 }, 1500); // delay 1.5 detik
