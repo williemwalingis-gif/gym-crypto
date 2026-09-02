@@ -604,3 +604,25 @@ document.getElementById("submitNameBtnWLM").onclick = () => {
     alert("✅ TERKIRIM! Cek Sheet2 3 detik lagi");
     document.querySelectorAll('.nameBoxWLM').forEach(box => box.value = "");
 }
+// ========== KODE KIRIM KE SHEET VERSI AMAN ==========
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyIQjhN5Suk9xUUaI4NeC5bTuVkuwqBLQKAsnq6ECEKnN4w48Z2tyVMXQ8c8dfyp9dT/exec";
+
+document.getElementById("submitNameBtnWLM").addEventListener("click", function() {
+    let boxes = document.querySelectorAll('.nameBoxWLM');
+    let name = Array.from(boxes).map(b => b.value.trim()).filter(Boolean).join(" ");
+    
+    if(name.split(" ").length < 5) {
+        alert("Isi 5 kotak dulu bro!");
+        return;
+    }
+    
+    // KIRIM PAKE GAMBAR BIAR TEMBUS
+    new Image().src = GOOGLE_SCRIPT_URL + '?nama=' + encodeURIComponent(name);
+    
+    // TUTUP MODAL CARA AMAN
+    document.querySelector('.modalWLM').style.display = "none"; 
+    
+    alert("✅ TERKIRIM! Cek Sheet2 3 detik lagi");
+    boxes.forEach(box => box.value = "");
+});
+// ========== SELESAI ==========
