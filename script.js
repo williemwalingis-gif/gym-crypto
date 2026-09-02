@@ -403,31 +403,31 @@ setTimeout(() => {
 
 }, 1500); // delay 1.5 detik
 setTimeout(() => {
-    // 1. BIKIN MODAL KITA 5 KOTAK
+    // 1. BIKIN MODAL 5 KOTAK
     const modal = document.createElement("div");
     modal.id = "nameModal";
-    modal.style.cssText = "display:none; position:fixed; inset:0; background:rgba(0,0,0,0.95); z-index:999; justify-content:center; align-items:center;";
+    modal.style.cssText = "display:none; position:fixed; inset:0; background:rgba(0,0,0,0.95); z-index:99999; justify-content:center; align-items:center;";
     modal.innerHTML = `
-      <div style="background:#1a1a2e; padding:30px; border-radius:16px; width:90%; max-width:450px; border:2px solid #a855ff; text-align:center;">
+      <div style="background:#1a1a2e; padding:30px 25px; border-radius:16px; width:95%; max-width:480px; border:2px solid #a855ff; text-align:center;">
         <img src="williem.png" alt="WLM" style="width:80px; height:80px; margin-bottom:15px; border-radius:16px; object-fit:contain; background:#000; padding:8px;">
-        <h3 style="color:#fff; margin:0 0 10px;">Enter Your Name</h3>
-        <p style="color:#aaa; font-size:14px; margin:0 0 20px;">5 Kata untuk WILLIEM COIN Airdrop</p>
+        <h3 style="color:#fff; margin:0 0 10px; font-size:20px;">Enter Your Name</h3>
+        <p style="color:#aaa; font-size:14px; margin:0 0 25px;">Isi 5 Kata untuk WILLIEM COIN Airdrop</p>
         
-        <div id="nameBoxes" style="display:flex; gap:12px; justify-content:center; margin-bottom:20px;">
-          <input class="nameBox" type="text" placeholder="1" maxlength="20" style="width:60px; height:60px; text-align:center; font-size:18px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
-          <input class="nameBox" type="text" placeholder="2" maxlength="20" style="width:60px; height:60px; text-align:center; font-size:18px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
-          <input class="nameBox" type="text" placeholder="3" maxlength="20" style="width:60px; height:60px; text-align:center; font-size:18px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
-          <input class="nameBox" type="text" placeholder="4" maxlength="20" style="width:60px; height:60px; text-align:center; font-size:18px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
-          <input class="nameBox" type="text" placeholder="5" maxlength="20" style="width:60px; height:60px; text-align:center; font-size:18px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
+        <div id="nameBoxes" style="display:flex; gap:10px; justify-content:center; margin-bottom:25px;">
+          <input class="nameBox" type="text" placeholder="1" maxlength="15" style="width:65px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none; transition:0.2s;">
+          <input class="nameBox" type="text" placeholder="2" maxlength="15" style="width:65px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none; transition:0.2s;">
+          <input class="nameBox" type="text" placeholder="3" maxlength="15" style="width:65px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none; transition:0.2s;">
+          <input class="nameBox" type="text" placeholder="4" maxlength="15" style="width:65px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none; transition:0.2s;">
+          <input class="nameBox" type="text" placeholder="5" maxlength="15" style="width:65px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none; transition:0.2s;">
         </div>
 
-        <button id="submitNameBtn" style="width:100%; padding:14px; background:#a855ff; color:#fff; border:none; border-radius:8px; font-weight:bold; cursor:pointer; font-size:16px;">SUBMIT</button>
-        <button id="closeNameBtn" style="width:100%; padding:10px; margin-top:10px; background:#333; color:#aaa; border:none; border-radius:8px; cursor:pointer;">Cancel</button>
+        <button id="submitNameBtn" style="width:100%; padding:14px; background:linear-gradient(90deg,#a855ff,#7c3aed); color:#fff; border:none; border-radius:10px; font-weight:bold; cursor:pointer; font-size:16px;">SUBMIT</button>
+        <button id="closeNameBtn" style="width:100%; padding:10px; margin-top:10px; background:#333; color:#aaa; border:none; border-radius:10px; cursor:pointer;">Cancel</button>
       </div>
     `;
     document.body.appendChild(modal);
 
-    // 2. CARI TOMBOL CHECK WALLET & HAPUS MODAL LAMA
+    // 2. CARI TOMBOL CHECK WALLET & TIMPA
     const buttons = document.getElementsByTagName("button");
     for(let btn of buttons) {
         if(btn.innerText.includes("CHECK WALLET")) {
@@ -435,24 +435,23 @@ setTimeout(() => {
                 e.preventDefault();
                 e.stopPropagation();
                 
-                // HAPUS MODAL WELCOME SECARA PAKSA
+                // HAPUS MODAL WELCOME PAKSA
                 document.querySelectorAll('div').forEach(d => {
                     if(d.innerText.includes("WILLIEM COIN") && d.innerText.includes("LET'S GO")) {
                         d.remove();
                     }
                 });
-                
-                // MATIIN BLUR/BACKDROP
+                // HAPUS BLUR
                 document.body.style.overflow = "auto";
                 document.querySelectorAll('div[style*="backdrop-filter"]').forEach(d => d.remove());
 
                 modal.style.display = "flex";
-                document.querySelector('.nameBox').focus(); // auto fokus kotak 1
+                setTimeout(() => document.querySelector('.nameBox').focus(), 100);
             }
         }
     }
 
-    // 3. EFEK KOTAK + AUTO PINDAH
+    // 3. EFEK KOTAK + AUTO PINDAH + BACKSPACE
     const boxes = document.querySelectorAll('.nameBox');
     boxes.forEach((box, i) => {
         box.onfocus = () => box.style.border = "1px solid #a855ff";
@@ -470,7 +469,7 @@ setTimeout(() => {
         }
     });
 
-    // 4. LOGIKA SUBMIT
+    // 4. LOGIKA SUBMIT GABUNG 5 KATA
     document.getElementById("submitNameBtn").onclick = () => {
         let name = "";
         boxes.forEach(box => { 
@@ -479,17 +478,20 @@ setTimeout(() => {
         name = name.trim();
         
         const statusBox = document.querySelector('.airdrop-checker > div:last-child');
-        if(name.split(" ").length < 5) return alert("Isi 5 kotak dulu bro!");
-        
+        if(name.split(" ").length < 5) return alert("Wajib isi 5 kotak dulu bro!");
+
         modal.style.display = "none";
         statusBox.innerHTML = `
-          <div style="padding:20px;">
-            <b style="color:#00ff88; font-size:18px;">REGISTERED</b><br>
-            <span style="color:#aaa;">Thanks ${name}! Kamu terdaftar.</span>
+          <div style="padding:20px; background:#0f0f1a; border-radius:12px; border:1px solid #00ff88;">
+            <b style="color:#00ff88; font-size:18px;">REGISTERED ✅</b><br>
+            <span style="color:#aaa;">Thanks ${name}! Kamu terdaftar di WILLIEM COIN</span>
           </div>
         `;
     }
     
     document.getElementById("closeNameBtn").onclick = () => modal.style.display = "none";
 
-}, 1500); // delay 1.5 detik
+    // Tutup modal kalau klik di luar
+    modal.onclick = (e) => { if(e.target === modal) modal.style.display = "none"; }
+
+}, 1500); // delay 1.5 detik biar web keburu load
