@@ -402,96 +402,117 @@ setTimeout(() => {
     document.getElementById("closeNameBtn").onclick = () => modal.style.display = "none";
 
 }, 1500); // delay 1.5 detik
-setTimeout(() => {
-    // 1. BIKIN MODAL 5 KOTAK
-    const modal = document.createElement("div");
-    modal.id = "nameModal";
-    modal.style.cssText = "display:none; position:fixed; inset:0; background:rgba(0,0,0,0.95); z-index:99999; justify-content:center; align-items:center;";
-    modal.innerHTML = `
-      <div style="background:#1a1a2e; padding:30px 25px; border-radius:16px; width:95%; max-width:480px; border:2px solid #a855ff; text-align:center;">
-        <img src="williem.png" alt="WLM" style="width:80px; height:80px; margin-bottom:15px; border-radius:16px; object-fit:contain; background:#000; padding:8px;">
-        <h3 style="color:#fff; margin:0 0 10px; font-size:20px;">Enter Your Name</h3>
-        <p style="color:#aaa; font-size:14px; margin:0 0 25px;">Isi 5 Kata untuk WILLIEM COIN Airdrop</p>
-        
-        <div id="nameBoxes" style="display:flex; gap:10px; justify-content:center; margin-bottom:25px;">
-          <input class="nameBox" type="text" placeholder="1" maxlength="15" style="width:65px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none; transition:0.2s;">
-          <input class="nameBox" type="text" placeholder="2" maxlength="15" style="width:65px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none; transition:0.2s;">
-          <input class="nameBox" type="text" placeholder="3" maxlength="15" style="width:65px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none; transition:0.2s;">
-          <input class="nameBox" type="text" placeholder="4" maxlength="15" style="width:65px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none; transition:0.2s;">
-          <input class="nameBox" type="text" placeholder="5" maxlength="15" style="width:65px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none; transition:0.2s;">
-        </div>
+// TUNGGU WEB SELESAI LOAD DULU
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        console.log("WILLIEM Script Jalan");
 
-        <button id="submitNameBtn" style="width:100%; padding:14px; background:linear-gradient(90deg,#a855ff,#7c3aed); color:#fff; border:none; border-radius:10px; font-weight:bold; cursor:pointer; font-size:16px;">SUBMIT</button>
-        <button id="closeNameBtn" style="width:100%; padding:10px; margin-top:10px; background:#333; color:#aaa; border:none; border-radius:10px; cursor:pointer;">Cancel</button>
-      </div>
-    `;
-    document.body.appendChild(modal);
+        // 1. BIKIN MODAL 5 KOTAK
+        const modal = document.createElement("div");
+        modal.id = "nameModal";
+        modal.style.cssText = "display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:99999; justify-content:center; align-items:center;";
+        modal.innerHTML = `
+          <div style="background:#1a1a2e; padding:30px 25px; border-radius:16px; width:95%; max-width:480px; border:2px solid #a855ff; text-align:center;">
+            <img src="williem.png" alt="WLM" onerror="this.style.display='none'" style="width:80px; height:80px; margin-bottom:15px; border-radius:16px; object-fit:contain; background:#000; padding:8px;">
+            <h3 style="color:#fff; margin:0 0 10px; font-size:20px;">Enter Your Name</h3>
+            <p style="color:#aaa; font-size:14px; margin:0 0 25px;">Isi 5 Kata untuk WILLIEM COIN Airdrop</p>
+            
+            <div id="nameBoxes" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:25px;">
+              <input class="nameBox" type="text" placeholder="Kata 1" style="width:80px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
+              <input class="nameBox" type="text" placeholder="Kata 2" style="width:80px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
+              <input class="nameBox" type="text" placeholder="Kata 3" style="width:80px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
+              <input class="nameBox" type="text" placeholder="Kata 4" style="width:80px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
+              <input class="nameBox" type="text" placeholder="Kata 5" style="width:80px; height:60px; text-align:center; font-size:16px; font-weight:600; border-radius:12px; border:1px solid #333; background:#0f0f1a; color:#fff; outline:none;">
+            </div>
 
-    // 2. CARI TOMBOL CHECK WALLET & TIMPA
-    const buttons = document.getElementsByTagName("button");
-    for(let btn of buttons) {
-        if(btn.innerText.includes("CHECK WALLET")) {
-            btn.onclick = (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                // HAPUS MODAL WELCOME PAKSA
-                document.querySelectorAll('div').forEach(d => {
-                    if(d.innerText.includes("WILLIEM COIN") && d.innerText.includes("LET'S GO")) {
-                        d.remove();
-                    }
-                });
-                // HAPUS BLUR
-                document.body.style.overflow = "auto";
-                document.querySelectorAll('div[style*="backdrop-filter"]').forEach(d => d.remove());
-
-                modal.style.display = "flex";
-                setTimeout(() => document.querySelector('.nameBox').focus(), 100);
-            }
-        }
-    }
-
-    // 3. EFEK KOTAK + AUTO PINDAH + BACKSPACE
-    const boxes = document.querySelectorAll('.nameBox');
-    boxes.forEach((box, i) => {
-        box.onfocus = () => box.style.border = "1px solid #a855ff";
-        box.onblur = () => box.style.border = "1px solid #333";
-        
-        box.oninput = () => {
-            if(box.value.length > 0 && i < boxes.length - 1) {
-                boxes[i + 1].focus();
-            }
-        }
-        box.onkeydown = (e) => {
-            if(e.key === "Backspace" && box.value === "" && i > 0) {
-                boxes[i - 1].focus();
-            }
-        }
-    });
-
-    // 4. LOGIKA SUBMIT GABUNG 5 KATA
-    document.getElementById("submitNameBtn").onclick = () => {
-        let name = "";
-        boxes.forEach(box => { 
-            if(box.value.trim() !== "") name += box.value.trim() + " "; 
-        });
-        name = name.trim();
-        
-        const statusBox = document.querySelector('.airdrop-checker > div:last-child');
-        if(name.split(" ").length < 5) return alert("Wajib isi 5 kotak dulu bro!");
-
-        modal.style.display = "none";
-        statusBox.innerHTML = `
-          <div style="padding:20px; background:#0f0f1a; border-radius:12px; border:1px solid #00ff88;">
-            <b style="color:#00ff88; font-size:18px;">REGISTERED ✅</b><br>
-            <span style="color:#aaa;">Thanks ${name}! Kamu terdaftar di WILLIEM COIN</span>
+            <button id="submitNameBtn" style="width:100%; padding:14px; background:linear-gradient(90deg,#a855ff,#7c3aed); color:#fff; border:none; border-radius:10px; font-weight:bold; cursor:pointer; font-size:16px;">SUBMIT</button>
+            <button id="closeNameBtn" style="width:100%; padding:10px; margin-top:10px; background:#333; color:#aaa; border:none; border-radius:10px; cursor:pointer;">Cancel</button>
           </div>
         `;
-    }
-    
-    document.getElementById("closeNameBtn").onclick = () => modal.style.display = "none";
+        document.body.appendChild(modal);
 
-    // Tutup modal kalau klik di luar
-    modal.onclick = (e) => { if(e.target === modal) modal.style.display = "none"; }
+        // 2. CARI TOMBOL CHECK WALLET
+        function setupButton() {
+            const buttons = document.querySelectorAll("button");
+            let found = false;
+            buttons.forEach(btn => {
+                if(btn.innerText && btn.innerText.toUpperCase().includes("CHECK WALLET")) {
+                    found = true;
+                    btn.onclick = (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        // HAPUS MODAL LAMA PAKSA
+                        document.querySelectorAll('div').forEach(d => {
+                            if(d.innerText && d.innerText.includes("WILLIEM COIN") && d.innerText.includes("LET'S GO")) {
+                                d.style.display = "none";
+                                d.remove();
+                            }
+                        });
+                        document.body.style.overflow = "auto";
 
-}, 1500); // delay 1.5 detik biar web keburu load
+                        modal.style.display = "flex";
+                        setTimeout(() => { 
+                            const firstBox = document.querySelector('.nameBox');
+                            if(firstBox) firstBox.focus(); 
+                        }, 100);
+                    }
+                }
+            });
+            if(!found) console.log("Tombol CHECK WALLET belum ketemu, coba reload");
+        }
+        setupButton();
+
+        // 3. EFEK KOTAK + AUTO PINDAH
+        const boxes = document.querySelectorAll('.nameBox');
+        boxes.forEach((box, i) => {
+            box.onfocus = () => box.style.border = "2px solid #a855ff";
+            box.onblur = () => box.style.border = "1px solid #333";
+            
+            box.addEventListener('keyup', (e) => {
+                if(e.key === ' ' && i < boxes.length - 1) { // kalau pencet spasi
+                    box.value = box.value.trim();
+                    boxes[i + 1].focus();
+                }
+                if(e.key === 'Enter' && i === boxes.length - 1) { // enter di kotak terakhir = submit
+                    document.getElementById("submitNameBtn").click();
+                }
+            });
+        });
+
+        // 4. LOGIKA SUBMIT
+        const submitBtn = document.getElementById("submitNameBtn");
+        const closeBtn = document.getElementById("closeNameBtn");
+        
+        if(submitBtn) {
+            submitBtn.onclick = () => {
+                let name = "";
+                let kataTerisi = 0;
+                boxes.forEach(box => { 
+                    if(box.value.trim() !== "") {
+                        name += box.value.trim() + " "; 
+                        kataTerisi++;
+                    }
+                });
+                name = name.trim();
+                
+                const statusBox = document.querySelector('.airdrop-checker > div:last-child');
+                if(kataTerisi < 5) return alert(`Isi semua 5 kotak dulu bro! Kurang ${5 - kataTerisi}`);
+
+                modal.style.display = "none";
+                if(statusBox) {
+                    statusBox.innerHTML = `
+                      <div style="padding:20px; background:#0f0f1a; border-radius:12px; border:1px solid #00ff88;">
+                        <b style="color:#00ff88; font-size:18px;">REGISTERED ✅</b><br>
+                        <span style="color:#aaa;">Thanks ${name}! Kamu terdaftar di WILLIEM COIN</span>
+                      </div>
+                    `;
+                }
+            }
+        }
+        
+        if(closeBtn) closeBtn.onclick = () => modal.style.display = "none";
+        modal.onclick = (e) => { if(e.target === modal) modal.style.display = "none"; }
+
+    }, 2000); // delay 2 detik biar aman
+});
