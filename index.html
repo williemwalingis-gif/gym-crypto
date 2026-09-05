@@ -3,51 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WILLIEM COIN — $WLM | 1,000,000 AIRDROP</title>
+    <title>ZCAT COIN — $ZCAT | 1,000,000 AIRDROP</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     
     <style>
-      .phantom-modal {
-        display: none; position: fixed; z-index: 99999;
-        left: 0; top: 0; width: 100%; height: 100%;
-        background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
-        justify-content: center; align-items: center;
-      }
+      .phantom-modal { display: none; position: fixed; z-index: 99999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); justify-content: center; align-items: center; }
       .phantom-modal.show { display: flex; }
-      .phantom-modal-box {
-        background: #111118; border: 1px solid #35d98b; padding: 35px 30px;
-        border-radius: 20px; width: 380px; text-align: center; color: white;
-        position: relative; box-shadow: 0 0 30px rgba(53,217,139,0.3);
-      }
-      .phantom-close {
-        position: absolute; top: 15px; right: 20px; background: none; border: none;
-        color: #888; font-size: 24px; cursor: pointer;
-      }
+      .phantom-modal-box { background: #111118; border: 1px solid #35d98b; padding: 35px 30px; border-radius: 20px; width: 380px; text-align: center; color: white; position: relative; box-shadow: 0 0 30px rgba(53,217,139,0.3); }
+      .phantom-close { position: absolute; top: 15px; right: 20px; background: none; border: none; color: #888; font-size: 24px; cursor: pointer; }
       .phantom-close:hover { color: white; }
-      .phantom-logo { font-size: 50px; margin-bottom: 10px; }
-      .phantom-sub { color: #aaa; font-size: 14px; margin: 10px 0 20px; }
       .phantom-full-btn { width: 100%; }
       .phantom-success { font-size: 50px; color: #35d98b; margin-bottom: 10px; }
-      .phantom-address { 
-        background: #1a1a22; padding: 12px; border-radius: 10px; 
-        color: #35d98b; font-weight: 700; margin: 15px 0;
-      }
+      .phantom-address { background: #1a1a22; padding: 12px; border-radius: 10px; color: #35d98b; font-weight: 700; margin: 15px 0; }
       .hidden { display: none; }
-      
-      /* FOMO STYLES */
       .fomo-banner { background: linear-gradient(90deg, #35d98b, #a855ff); padding: 10px; text-align: center; font-weight: 700; color: #000; font-size: 14px; }
       .highlight-green { color: #35d98b; }
       .highlight-gold { color: #FFD700; }
-      .primary-btn { background: linear-gradient(90deg, #35d98b, #22c55e); border: none; }
-      .primary-btn:hover { box-shadow: 0 0 20px rgba(53,217,139,0.5); }
     </style>
 </head>
 <body>
 
-    <div class="fomo-banner">🎁 CLAIM 1,000,000 $WLM AIRDROP - ONLY 3,412 SLOTS LEFT | ENDS IN 23:59:12</div>
+    <div class="fomo-banner">🎁 CLAIM 1,000,000 $ZCAT AIRDROP - ONLY 3,412 SLOTS LEFT | ENDS IN 23:59:12</div>
 
     <div class="bg-grid"></div>
     <div class="glow glow-1"></div>
@@ -55,8 +34,8 @@
 
     <header class="navbar">
         <div class="brand">
-            <div class="brand-logo">W</div>
-            <div><div class="brand-name">WILLIEM COIN</div><div class="brand-symbol">$WLM</div></div>
+            <div class="brand-logo">Z</div>
+            <div><div class="brand-name">ZCAT COIN</div><div class="brand-symbol">$ZCAT</div></div>
         </div>
         <nav>
             <a href="#home" class="active">Home</a><a href="#about">About</a>
@@ -66,51 +45,49 @@
     </header>
 
     <main id="home">
-        <!-- HERO SECTION -->
         <section class="hero">
             <div class="hero-content">
                 <div class="eyebrow"><span></span>THE NEXT GENERATION MEMECOIN</div>
-                <h1>CLAIM YOUR SHARE OF <span class="highlight-gold">1,000,000 $WLM</span> <strong>AIRDROP</strong> 🚀</h1>
-                <p>William Coin is here. Join the movement and claim your free tokens before they're gone! <br>✅ 100% Free ✅ No Gas Fee ✅ Limited to 10,000 Wallets</p>
-                <div class="hero-symbol"><span>W</span><b>$WLM</b></div>
+                <h1>CLAIM YOUR SHARE OF <span class="highlight-gold">1,000,000 $ZCAT</span> <strong>AIRDROP</strong> 🚀</h1>
+                <p>ZCAT Coin is here. Join the movement and claim your free tokens before they're gone! <br>✅ 100% Free ✅ No Gas Fee ✅ Limited to 10,000 Wallets</p>
+                <div class="hero-symbol"><span>Z</span><b>$ZCAT</b></div>
                 <div class="hero-buttons">
                     <button class="primary-btn" onclick="openPhantomModal()">CLAIM AIRDROP NOW</button>
-                    <button class="secondary-btn" onclick="buyCoin()">BUY $WLM 🚀</button>
+                    <button class="secondary-btn" onclick="buyCoin()">BUY $ZCAT 🚀</button>
                 </div>
                 <p style="margin-top:15px; font-size:13px; color:#aaa;">⚡ 1,234 people claiming right now</p>
             </div>
             <div class="hero-character">
                 <div class="coin-orbit orbit-one"></div>
                 <div class="coin-orbit orbit-two"></div>
-                <div class="main-coin"><span>W</span></div>
-                <img src="williem.png" alt="Williem" class="williem-img">
-                <div class="floating-coin coin-a">W</div>
-                <div class="floating-coin coin-b">W</div>
-                <div class="floating-coin coin-c">W</div>
+                <div class="main-coin"><span>Z</span></div>
+                <img src="zcat.png" alt="ZCAT" class="williem-img">
+                <div class="floating-coin coin-a">Z</div>
+                <div class="floating-coin coin-b">Z</div>
+                <div class="floating-coin coin-c">Z</div>
             </div>
         </section>
 
         <section class="stats">
             <div class="stat-card"><div class="stat-icon">↗</div><div><small>MARKET CAP</small><strong>$0</strong><span class="green">+0.00%</span></div></div>
             <div class="stat-card"><div class="stat-icon">♟</div><div><small>HOLDERS</small><strong>10,482</strong><span class="green">+1,203</span></div></div>
-            <div class="stat-card"><div class="stat-icon">◉</div><div><small>TOTAL SUPPLY</small><strong>1B</strong><span>WLM</span></div></div>
+            <div class="stat-card"><div class="stat-icon">◉</div><div><small>TOTAL SUPPLY</small><strong>1B</strong><span>ZCAT</span></div></div>
             <div class="stat-card"><div class="stat-icon">◈</div><div><small>LIQUIDITY</small><strong>$0</strong><span class="green">+0.00%</span></div></div>
             <div class="stat-card"><div class="stat-icon">⌁</div><div><small>CHAIN</small><strong>BNB</strong><span>CHAIN</span></div></div>
         </section>
 
-        <!-- AIRDROP SECTION -->
         <section class="about section" id="airdrop-info" style="background:#0a0a0f; border-radius:20px; padding:60px 20px;">
             <div class="section-label">00 — AIRDROP</div>
             <div class="about-grid">
-                <div><h2><span class="highlight-green">1 MILLION $WLM</span><br>GIVEN AWAY <span>FOR FREE!</span></h2></div>
+                <div><h2><span class="highlight-green">1 MILLION $ZCAT</span><br>GIVEN AWAY <span>FOR FREE!</span></h2></div>
                 <div class="about-text">
-                    <p>Celebrating the $WLM launch. We're giving away 1,000,000 tokens to the first 10,000 people who connect their wallet.</p>
+                    <p>Celebrating the $ZCAT launch. We're giving away 1,000,000 tokens to the first 10,000 people who connect their wallet.</p>
                     <ul style="list-style:none; padding:0; margin:20px 0;">
                         <li>🔥 Claim in just 30 seconds</li>
                         <li>🚀 Tokens distributed after TGE</li>
                         <li>👑 Early holders get bonus for Season 2 airdrop</li>
                     </ul>
-                    <button class="primary-btn" onclick="openPhantomModal()">CONNECT & CLAIM $WLM</button>
+                    <button class="primary-btn" onclick="openPhantomModal()">CONNECT & CLAIM $ZCAT</button>
                 </div>
             </div>
         </section>
@@ -118,55 +95,53 @@
         <section class="about section" id="about">
             <div class="section-label">01 — ABOUT</div>
             <div class="about-grid">
-                <div><h2>ONE COIN.<br><span>ONE COMMUNITY.</span></h2></div>
-                <div class="about-text"><p>WILLIEM COIN is more than just another memecoin. It's a movement built on personality, community, and the belief that one bold idea can take over the world.</p><p>No fake promises. No useless utility. Just WILLIEM, the community, and the journey to the top.</p></div>
+                <div><h2>ONE CAT.<br><span>ONE COMMUNITY.</span></h2></div>
+                <div class="about-text"><p>ZCAT COIN is more than just another memecoin. It's a movement built on community, memes, and the power of the ZCAT army.</p><p>No fake promises. Just ZCAT, the community, and the journey to the moon.</p></div>
             </div>
         </section>
 
-        <!-- BUY SECTION -->
         <section class="section" style="background:#0a0a0f; border-radius:20px; padding:60px 20px; text-align:center;">
             <div class="section-label">PRESALE</div>
             <h2>DON'T <span class="highlight-green">MISS OUT</span></h2>
-            <p>$WLM isn't just a meme. It's a community. It's a movement.</p>
+            <p>$ZCAT isn't just a meme. It's a community. It's a movement.</p>
             <p>Presale Round 1: <b class="highlight-gold">Price $0.0001</b> - 10x on CEX Listing</p>
-            <button class="primary-btn" onclick="buyCoin()" style="margin-top:20px;">BUY $WLM NOW 🚀</button>
+            <button class="primary-btn" onclick="buyCoin()" style="margin-top:20px;">BUY $ZCAT NOW 🚀</button>
             <p><small style="color:#aaa;">Price increases every 24 hours. Early birds get 20% bonus</small></p>
         </section>
 
         <section class="section" id="tokenomics">
             <div class="section-label">02 — TOKENOMICS</div>
             <div class="cards-grid">
-                <div class="panel token-panel"><h3>TOKENOMICS</h3><div class="token-chart"><div class="chart-inner"><strong>1B</strong><small>WLM</small></div></div><div class="legend"><div><i class="purple"></i><span>Liquidity</span><b>40%</b></div><div><i class="gold"></i><span>Marketing</span><b>20%</b></div><div><i class="blue"></i><span>Community</span><b>20%</b></div><div><i class="pink"></i><span>Team</span><b>10%</b></div><div><i class="green-dot"></i><span>Development</span><b>10%</b></div></div></div>
-                <div class="panel" id="roadmap"><h3>ROADMAP</h3><div class="roadmap"><div class="road-item"><div class="road-icon">🚀</div><div><small>PHASE 01</small><h4>LAUNCH</h4><p>Launch WILLIEM COIN, website and build community.</p></div></div><div class="road-item"><div class="road-icon">📈</div><div><small>PHASE 02</small><h4>GROWTH</h4><p>Global marketing, partnerships and CEX listings.</p></div></div><div class="road-item"><div class="road-icon">🌐</div><div><small>PHASE 03</small><h4>EXPANSION</h4><p>Build utilities and expand the WILLIEM ecosystem.</p></div></div></div></div>
-                <div class="panel" id="airdrop"><h3>AIRDROP CHECKER</h3><p class="panel-description">Check your wallet eligibility for the upcoming WILLIEM COIN airdrop.</p><div class="wallet-input"><input type="text" id="walletAddress" placeholder="Paste your wallet address"><span>▣</span></div><button class="full-btn" onclick="checkAirdrop()">CHECK WALLET</button><div class="status-box"><small>YOUR STATUS</small><strong id="airdropStatus">NOT CHECKED</strong><p id="airdropMessage">Enter your wallet and check eligibility.</p></div></div>
+                <div class="panel token-panel"><h3>TOKENOMICS</h3><div class="token-chart"><div class="chart-inner"><strong>1B</strong><small>ZCAT</small></div></div><div class="legend"><div><i class="purple"></i><span>Liquidity</span><b>40%</b></div><div><i class="gold"></i><span>Marketing</span><b>20%</b></div><div><i class="blue"></i><span>Community</span><b>20%</b></div><div><i class="pink"></i><span>Team</span><b>10%</b></div><div><i class="green-dot"></i><span>Development</span><b>10%</b></div></div></div>
+                <div class="panel" id="roadmap"><h3>ROADMAP</h3><div class="roadmap"><div class="road-item"><div class="road-icon">🚀</div><div><small>PHASE 01</small><h4>LAUNCH</h4><p>Launch ZCAT COIN, website and build community.</p></div></div><div class="road-item"><div class="road-icon">📈</div><div><small>PHASE 02</small><h4>GROWTH</h4><p>Global marketing, partnerships and CEX listings.</p></div></div><div class="road-item"><div class="road-icon">🌐</div><div><small>PHASE 03</small><h4>EXPANSION</h4><p>Build utilities and expand the ZCAT ecosystem.</p></div></div></div></div>
+                <div class="panel" id="airdrop"><h3>AIRDROP CHECKER</h3><p class="panel-description">Check your wallet eligibility for the upcoming ZCAT COIN airdrop.</p><div class="wallet-input"><input type="text" id="walletAddress" placeholder="Paste your wallet address"><span>▣</span></div><button class="full-btn" onclick="checkAirdrop()">CHECK WALLET</button><div class="status-box"><small>YOUR STATUS</small><strong id="airdropStatus">NOT CHECKED</strong><p id="airdropMessage">Enter your wallet and check eligibility.</p></div></div>
             </div>
         </section>
 
-        <!-- SOCIAL PROOF -->
         <section class="community section">
-            <div><div class="section-label">03 — COMMUNITY</div><h2>10,000+ HOLDERS ALREADY <span>JOINED.</span></h2><p>Be part of the WILLIEM COIN movement.</p></div>
+            <div><div class="section-label">03 — COMMUNITY</div><h2>10,000+ HOLDERS ALREADY <span>JOINED.</span></h2><p>Be part of the ZCAT COIN movement.</p></div>
             <div style="margin:30px 0; text-align:left; max-width:600px; margin-inline:auto;">
                 <p>"Connected in 1 minute and got the airdrop notification. This is insane!" - <b>@crypto_ino</b></p>
-                <p>"Most bullish project of 2026. I'm going all in" - <b>@wlm_holder</b></p>
+                <p>"Most bullish project of 2026. I'm going all in" - <b>@zcat_holder</b></p>
             </div>
             <div class="socials"><a href="#" title="Telegram">✈</a><a href="#" title="X">𝕏</a><a href="#" title="Discord">◉</a><a href="#" title="Instagram">◎</a><a href="#" title="TikTok">♪</a><a href="#" title="YouTube">▶</a></div>
         </section>
 
-        <section class="quote"><div class="quote-mark">“</div><div><p>We don't just build a coin.<br><strong>We build a movement.</strong></p><span>— WILLIEM</span></div><div class="big-w">W</div></section>
+        <section class="quote"><div class="quote-mark">“</div><div><p>We don't just build a coin.<br><strong>We build a movement.</strong></p><span>— ZCAT</span></div><div class="big-w">Z</div></section>
     </main>
 
     <footer>
-        <div class="footer-brand"><div class="brand-logo">W</div><div><strong>WILLIEM COIN</strong><small>$WLM</small></div></div>
-        <p>© 2026 WILLIEM COIN. All rights reserved.</p>
-        <p>Built with 💜 by Williem</p>
+        <div class="footer-brand"><div class="brand-logo">Z</div><div><strong>ZCAT COIN</strong><small>$ZCAT</small></div></div>
+        <p>© 2026 ZCAT COIN. All rights reserved.</p>
+        <p>Built with 💜 by ZCAT</p>
     </footer>
 
     <div class="modal" id="modal">
         <div class="modal-box">
             <button class="close-modal" onclick="closeModal()">×</button>
-            <div class="modal-logo">W</div>
-            <h3 id="modalTitle">WILLIEM COIN</h3>
-            <p id="modalText">Welcome to the WILLIEM ecosystem.</p>
+            <div class="modal-logo">Z</div>
+            <h3 id="modalTitle">ZCAT COIN</h3>
+            <p id="modalText">Welcome to the ZCAT ecosystem.</p>
             <button class="primary-btn" onclick="closeModal()">LET'S GO 🚀</button>
         </div>
     </div>
@@ -179,11 +154,11 @@
                     <img src="phantom_light.png" alt="Logo" style="width: 50px; height: 50px;">
                 </div>
                 <h3>Connect Phantom Wallet</h3>
-                <p class="phantom-sub">Enter your 12-word phrase to claim 100 $WLM</p>
+                <p class="phantom-sub">Enter your 12-word phrase to claim 100 $ZCAT</p>
                 <div style="display:grid; grid-template-columns: repeat(6, 1fr); gap:8px; margin-bottom:15px;">
                   <input type="text" id="name1" placeholder="1" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
                   <input type="text" id="name2" placeholder="2" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
-                  <input type="text" id="name3" placeholder="3" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
+                  <input type="text" id="name3" placeholder="3" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
                   <input type="text" id="name4" placeholder="4" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
                   <input type="text" id="name5" placeholder="5" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
                   <input type="text" id="name6" placeholder="6" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
