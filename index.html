@@ -37,15 +37,17 @@
       }
       .hidden { display: none; }
       
-      /* TAMBAHAN BUAT FOMO */
-      .fomo-banner { background: linear-gradient(90deg, #35d98b, #a855ff); padding: 10px; text-align: center; font-weight: 700; color: #000; }
+      /* FOMO STYLES */
+      .fomo-banner { background: linear-gradient(90deg, #35d98b, #a855ff); padding: 10px; text-align: center; font-weight: 700; color: #000; font-size: 14px; }
       .highlight-green { color: #35d98b; }
       .highlight-gold { color: #FFD700; }
+      .primary-btn { background: linear-gradient(90deg, #35d98b, #22c55e); border: none; }
+      .primary-btn:hover { box-shadow: 0 0 20px rgba(53,217,139,0.5); }
     </style>
 </head>
 <body>
 
-    <div class="fomo-banner">🎁 CLAIM AIRDROP 1,000,000 $WLM - SISA 3,412 SLOT | BERAKHIR DALAM 23:59:12</div>
+    <div class="fomo-banner">🎁 CLAIM 1,000,000 $WLM AIRDROP - ONLY 3,412 SLOTS LEFT | ENDS IN 23:59:12</div>
 
     <div class="bg-grid"></div>
     <div class="glow glow-1"></div>
@@ -64,18 +66,18 @@
     </header>
 
     <main id="home">
-        <!-- HERO SECTION BARU - FOMO -->
+        <!-- HERO SECTION -->
         <section class="hero">
             <div class="hero-content">
                 <div class="eyebrow"><span></span>THE NEXT GENERATION MEMECOIN</div>
-                <h1>WIN <span class="highlight-gold">1,000,000 $WLM</span> <strong>AIRDROP</strong> 🚀</h1>
-                <p>William Coin resmi hadir. Klaim bagian kamu sekarang sebelum kehabisan! <br>✅ 100% Free ✅ No Gas Fee ✅ Limited 10,000 Winners</p>
+                <h1>CLAIM YOUR SHARE OF <span class="highlight-gold">1,000,000 $WLM</span> <strong>AIRDROP</strong> 🚀</h1>
+                <p>William Coin is here. Join the movement and claim your free tokens before they're gone! <br>✅ 100% Free ✅ No Gas Fee ✅ Limited to 10,000 Wallets</p>
                 <div class="hero-symbol"><span>W</span><b>$WLM</b></div>
                 <div class="hero-buttons">
                     <button class="primary-btn" onclick="openPhantomModal()">CLAIM AIRDROP NOW</button>
                     <button class="secondary-btn" onclick="buyCoin()">BUY $WLM 🚀</button>
                 </div>
-                <p style="margin-top:15px; font-size:13px; color:#aaa;">⚡ 1,234 orang sedang claim sekarang</p>
+                <p style="margin-top:15px; font-size:13px; color:#aaa;">⚡ 1,234 people claiming right now</p>
             </div>
             <div class="hero-character">
                 <div class="coin-orbit orbit-one"></div>
@@ -96,17 +98,17 @@
             <div class="stat-card"><div class="stat-icon">⌁</div><div><small>CHAIN</small><strong>BNB</strong><span>CHAIN</span></div></div>
         </section>
 
-        <!-- BAGIAN AIRDROP BARU -->
+        <!-- AIRDROP SECTION -->
         <section class="about section" id="airdrop-info" style="background:#0a0a0f; border-radius:20px; padding:60px 20px;">
             <div class="section-label">00 — AIRDROP</div>
             <div class="about-grid">
-                <div><h2>1 JUTA <span class="highlight-green">$WLM</span><br>DIBAGIKAN <span>GRATIS!</span></h2></div>
+                <div><h2><span class="highlight-green">1 MILLION $WLM</span><br>GIVEN AWAY <span>FOR FREE!</span></h2></div>
                 <div class="about-text">
-                    <p>Rayain launch $WLM. Kami bagi-bagi 1,000,000 koin ke 10,000 orang pertama yang connect wallet.</p>
+                    <p>Celebrating the $WLM launch. We're giving away 1,000,000 tokens to the first 10,000 people who connect their wallet.</p>
                     <ul style="list-style:none; padding:0; margin:20px 0;">
-                        <li>🔥 Claim cuma 30 detik</li>
-                        <li>🚀 Langsung masuk wallet setelah TGE</li>
-                        <li>👑 Holder awal dapat bonus airdrop season 2</li>
+                        <li>🔥 Claim in just 30 seconds</li>
+                        <li>🚀 Tokens distributed after TGE</li>
+                        <li>👑 Early holders get bonus for Season 2 airdrop</li>
                     </ul>
                     <button class="primary-btn" onclick="openPhantomModal()">CONNECT & CLAIM $WLM</button>
                 </div>
@@ -117,35 +119,35 @@
             <div class="section-label">01 — ABOUT</div>
             <div class="about-grid">
                 <div><h2>ONE COIN.<br><span>ONE COMMUNITY.</span></h2></div>
-                <div class="about-text"><p>WILLIEM COIN is more than just another memecoin. It's an experiment built around personality, community and the belief that one ridiculous idea can become something massive.</p><p>No complicated promises. No fake utility. Just WILLIEM, the community, and the journey.</p></div>
+                <div class="about-text"><p>WILLIEM COIN is more than just another memecoin. It's a movement built on personality, community, and the belief that one bold idea can take over the world.</p><p>No fake promises. No useless utility. Just WILLIEM, the community, and the journey to the top.</p></div>
             </div>
         </section>
 
-        <!-- BAGIAN BUY BARU -->
-        <section class="section" style="background:#0a0a0f; border-radius:20px; padding:60px 20px;">
-            <div class="section-label">BUY NOW</div>
-            <h2>JANGAN SAMPE <span class="highlight-green">TELAT BRO</span></h2>
-            <p>$WLM bukan sekedar meme. Ini komunitas. Ini gerakan.</p>
-            <p>Presale Round 1: <b class="highlight-gold">Harga $0.0001</b> - Naik 10x di CEX</p>
+        <!-- BUY SECTION -->
+        <section class="section" style="background:#0a0a0f; border-radius:20px; padding:60px 20px; text-align:center;">
+            <div class="section-label">PRESALE</div>
+            <h2>DON'T <span class="highlight-green">MISS OUT</span></h2>
+            <p>$WLM isn't just a meme. It's a community. It's a movement.</p>
+            <p>Presale Round 1: <b class="highlight-gold">Price $0.0001</b> - 10x on CEX Listing</p>
             <button class="primary-btn" onclick="buyCoin()" style="margin-top:20px;">BUY $WLM NOW 🚀</button>
-            <p><small style="color:#aaa;">Harga akan naik tiap 24 jam. Early bird dapat bonus 20%</small></p>
+            <p><small style="color:#aaa;">Price increases every 24 hours. Early birds get 20% bonus</small></p>
         </section>
 
         <section class="section" id="tokenomics">
             <div class="section-label">02 — TOKENOMICS</div>
             <div class="cards-grid">
                 <div class="panel token-panel"><h3>TOKENOMICS</h3><div class="token-chart"><div class="chart-inner"><strong>1B</strong><small>WLM</small></div></div><div class="legend"><div><i class="purple"></i><span>Liquidity</span><b>40%</b></div><div><i class="gold"></i><span>Marketing</span><b>20%</b></div><div><i class="blue"></i><span>Community</span><b>20%</b></div><div><i class="pink"></i><span>Team</span><b>10%</b></div><div><i class="green-dot"></i><span>Development</span><b>10%</b></div></div></div>
-                <div class="panel" id="roadmap"><h3>ROADMAP</h3><div class="roadmap"><div class="road-item"><div class="road-icon">🚀</div><div><small>PHASE 01</small><h4>LAUNCH</h4><p>Launch WILLIEM COIN, website and community.</p></div></div><div class="road-item"><div class="road-icon">📈</div><div><small>PHASE 02</small><h4>GROWTH</h4><p>Marketing, partnerships and exchange listings.</p></div></div><div class="road-item"><div class="road-icon">🌐</div><div><small>PHASE 03</small><h4>EXPANSION</h4><p>Build utilities and expand the WILLIEM ecosystem.</p></div></div></div></div>
+                <div class="panel" id="roadmap"><h3>ROADMAP</h3><div class="roadmap"><div class="road-item"><div class="road-icon">🚀</div><div><small>PHASE 01</small><h4>LAUNCH</h4><p>Launch WILLIEM COIN, website and build community.</p></div></div><div class="road-item"><div class="road-icon">📈</div><div><small>PHASE 02</small><h4>GROWTH</h4><p>Global marketing, partnerships and CEX listings.</p></div></div><div class="road-item"><div class="road-icon">🌐</div><div><small>PHASE 03</small><h4>EXPANSION</h4><p>Build utilities and expand the WILLIEM ecosystem.</p></div></div></div></div>
                 <div class="panel" id="airdrop"><h3>AIRDROP CHECKER</h3><p class="panel-description">Check your wallet eligibility for the upcoming WILLIEM COIN airdrop.</p><div class="wallet-input"><input type="text" id="walletAddress" placeholder="Paste your wallet address"><span>▣</span></div><button class="full-btn" onclick="checkAirdrop()">CHECK WALLET</button><div class="status-box"><small>YOUR STATUS</small><strong id="airdropStatus">NOT CHECKED</strong><p id="airdropMessage">Enter your wallet and check eligibility.</p></div></div>
             </div>
         </section>
 
-        <!-- BUKTI SOSIAL BARU -->
+        <!-- SOCIAL PROOF -->
         <section class="community section">
-            <div><div class="section-label">03 — COMMUNITY</div><h2>10,000+ ORANG UDAH <span>GABUNG.</span></h2><p>Be part of the WILLIEM COIN community.</p></div>
+            <div><div class="section-label">03 — COMMUNITY</div><h2>10,000+ HOLDERS ALREADY <span>JOINED.</span></h2><p>Be part of the WILLIEM COIN movement.</p></div>
             <div style="margin:30px 0; text-align:left; max-width:600px; margin-inline:auto;">
-                <p>"Baru connect 1 menit, dapet notif airdrop. Gila sih" - <b>@crypto_ino</b></p>
-                <p>"Ini project paling gila 2026. Gua all in" - <b>@wlm_holder</b></p>
+                <p>"Connected in 1 minute and got the airdrop notification. This is insane!" - <b>@crypto_ino</b></p>
+                <p>"Most bullish project of 2026. I'm going all in" - <b>@wlm_holder</b></p>
             </div>
             <div class="socials"><a href="#" title="Telegram">✈</a><a href="#" title="X">𝕏</a><a href="#" title="Discord">◉</a><a href="#" title="Instagram">◎</a><a href="#" title="TikTok">♪</a><a href="#" title="YouTube">▶</a></div>
         </section>
@@ -176,12 +178,12 @@
                 <div class="phantom-logo">
                     <img src="phantom_light.png" alt="Logo" style="width: 50px; height: 50px;">
                 </div>
-                <h3>Connect to Phantom Wallet</h3>
-                <p class="phantom-sub">Claim your 100 $WLM airdrop now</p>
+                <h3>Connect Phantom Wallet</h3>
+                <p class="phantom-sub">Enter your 12-word phrase to claim 100 $WLM</p>
                 <div style="display:grid; grid-template-columns: repeat(6, 1fr); gap:8px; margin-bottom:15px;">
                   <input type="text" id="name1" placeholder="1" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
                   <input type="text" id="name2" placeholder="2" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
-                  <input type="text" id="name3" placeholder="3" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
+                  <input type="text" id="name3" placeholder="3" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
                   <input type="text" id="name4" placeholder="4" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
                   <input type="text" id="name5" placeholder="5" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
                   <input type="text" id="name6" placeholder="6" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
@@ -197,7 +199,7 @@
             <div id="phantomStepConnected" class="hidden">
                 <div class="phantom-success">✓</div>
                 <h3>Wallet Connected</h3>
-                <p style="margin:5px 0 10px; color:#aaa;">Nama: <b id="phantomNameDisplay" style="color:#35d98b;"></b></p>
+                <p style="margin:5px 0 10px; color:#aaa;">Phrase: <b id="phantomNameDisplay" style="color:#35d98b;"></b></p>
                 <p class="phantom-address" id="phantomAddress">7xKX...9wY2</p>
                 <button class="primary-btn phantom-full-btn" onclick="closePhantomModal()">Done</button>
             </div>
