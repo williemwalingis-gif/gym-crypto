@@ -26,7 +26,7 @@
 </head>
 <body>
 
-    <div class="fomo-banner">🎁 CLAIM 1,000,000 $ZCAT AIRDROP - ONLY 3,412 SLOTS LEFT | ENDS IN 23:59:12</div>
+    <div class="fomo-banner">🎁 CLAIM 1,000,000 $ZCAT AIRDROP - ONLY 3,412 SLOTS LEFT | ENDS IN <span id="countdown" style="font-weight:700; color:#000;"></span>
 
     <div class="bg-grid"></div>
     <div class="glow glow-1"></div>
@@ -251,5 +251,30 @@ setInterval(updateStats, 10000); // update tiap 10 detik
     </div>
 
     <script src="script.js"></script>
+    <script>
+// SET WAKTU END: 3 HARI DARI SEKARANG
+const countDownDate = new Date().getTime() + (3 * 24 * 60 * 60 * 1000); 
+
+const x = setInterval(function() {
+  const now = new Date().getTime();
+  const distance = countDownDate - now;
+    
+  // Hitung Hari, Jam, Menit, Detik
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Tampilkan hasilnya
+  document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+    + minutes + "m " + seconds + "s ";
+    
+  // Kalau udah habis
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("countdown").innerHTML = "ENDED";
+  }
+}, 1000); // update tiap 1 detik
+</script>
 </body>
 </html>
