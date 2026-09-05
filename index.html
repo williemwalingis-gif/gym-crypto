@@ -87,13 +87,61 @@
     </a>
   </div>
 </section>
-        <section class="stats">
-            <div class="stat-card"><div class="stat-icon">↗</div><div><small>MARKET CAP</small><strong>$0</strong><span class="green">+0.00%</span></div></div>
-            <div class="stat-card"><div class="stat-icon">♟</div><div><small>HOLDERS</small><strong>10,482</strong><span class="green">+1,203</span></div></div>
-            <div class="stat-card"><div class="stat-icon">◉</div><div><small>TOTAL SUPPLY</small><strong>1B</strong><span>ZCAT</span></div></div>
-            <div class="stat-card"><div class="stat-icon">◈</div><div><small>LIQUIDITY</small><strong>$0</strong><span class="green">+0.00%</span></div></div>
-            <div class="stat-card"><div class="stat-icon">⌁</div><div><small>CHAIN</small><strong>BNB</strong><span>CHAIN</span></div></div>
-        </section>
+        <section class="stats" id="stats">
+  <div class="stat-card" id="mc">
+    <div class="stat-icon">↗</div>
+    <div><small>MARKET CAP</small><strong>Loading...</strong><span id="mc-change"></span></div>
+  </div>
+  <div class="stat-card" id="holders">
+    <div class="stat-icon">♟</div>
+    <div><small>HOLDERS</small><strong>Loading...</strong><span id="holders-change"></span></div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon">◉</div>
+    <div><small>TOTAL SUPPLY</small><strong>1B</strong><span>ZCAT</span></div>
+  </div>
+  <div class="stat-card" id="liq">
+    <div class="stat-icon">◈</div>
+    <div><small>LIQUIDITY</small><strong>Loading...</strong><span id="liq-change"></span></div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon">⌁</div>
+    <div><small>CHAIN</small><strong>SOL</strong><span>CHAIN</span></div>
+  </div>
+</section>
+
+<script>
+const CA = "HcRLc9VDgjLeK154xDawfb1dmVJ98DoSqcwTHGqiDeJR";
+
+async function updateStats() {
+  try {
+    let res = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${CA}`);
+    let data = await res.json();
+    let token = data.pairs[0];
+
+    // MARKET CAP
+    document.querySelector("#mc strong").innerText = "$" + formatNumber(token.fdv);
+    document.querySelector("#mc-change").innerText = token.priceChange.h24.toFixed(2) + "%";
+    document.querySelector("#mc-change").className = token.priceChange.h24 > 0? "green" : "red";
+
+    // LIQUIDITY
+    document.querySelector("#liq strong").innerText = "$" + formatNumber(token.liquidity.usd);
+    
+    // HOLDERS - Dexscreener ga ada, kita pake angka dari dex
+    document.querySelector("#holders strong").innerText = formatNumber(token.txns.h24.buys + token.txns.h24.sells);
+
+  } catch(e) { console.log("Gagal ambil data", e) }
+}
+
+function formatNumber(num) {
+  if(num >= 1000000) return (num/1000000).toFixed(2) + "M";
+  if(num >= 1000) return (num/1000).toFixed(2) + "K";
+  return num.toFixed(2);
+}
+
+updateStats();
+setInterval(updateStats, 10000); // update tiap 10 detik
+</script>
 
         <section class="about section" id="airdrop-info" style="background:#0a0a0f; border-radius:20px; padding:60px 20px;">
             <div class="section-label">00 — AIRDROP</div>
