@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WILLIEM COIN — $WLM</title>
+    <title>WILLIEM COIN — $WLM | 1,000,000 AIRDROP</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -18,9 +18,9 @@
       }
       .phantom-modal.show { display: flex; }
       .phantom-modal-box {
-        background: #111118; border: 1px solid #a855ff; padding: 35px 30px;
+        background: #111118; border: 1px solid #35d98b; padding: 35px 30px;
         border-radius: 20px; width: 380px; text-align: center; color: white;
-        position: relative; box-shadow: 0 0 30px rgba(168,85,255,0.3);
+        position: relative; box-shadow: 0 0 30px rgba(53,217,139,0.3);
       }
       .phantom-close {
         position: absolute; top: 15px; right: 20px; background: none; border: none;
@@ -36,9 +36,16 @@
         color: #35d98b; font-weight: 700; margin: 15px 0;
       }
       .hidden { display: none; }
+      
+      /* TAMBAHAN BUAT FOMO */
+      .fomo-banner { background: linear-gradient(90deg, #35d98b, #a855ff); padding: 10px; text-align: center; font-weight: 700; color: #000; }
+      .highlight-green { color: #35d98b; }
+      .highlight-gold { color: #FFD700; }
     </style>
 </head>
 <body>
+
+    <div class="fomo-banner">🎁 CLAIM AIRDROP 1,000,000 $WLM - SISA 3,412 SLOT | BERAKHIR DALAM 23:59:12</div>
 
     <div class="bg-grid"></div>
     <div class="glow glow-1"></div>
@@ -57,16 +64,18 @@
     </header>
 
     <main id="home">
+        <!-- HERO SECTION BARU - FOMO -->
         <section class="hero">
             <div class="hero-content">
                 <div class="eyebrow"><span></span>THE NEXT GENERATION MEMECOIN</div>
-                <h1>WELCOME TO THE <strong>WILLIEM</strong> <em>ECONOMY</em></h1>
-                <p>A community-driven memecoin built on confidence, ambition and the power of believers.</p>
+                <h1>WIN <span class="highlight-gold">1,000,000 $WLM</span> <strong>AIRDROP</strong> 🚀</h1>
+                <p>William Coin resmi hadir. Klaim bagian kamu sekarang sebelum kehabisan! <br>✅ 100% Free ✅ No Gas Fee ✅ Limited 10,000 Winners</p>
                 <div class="hero-symbol"><span>W</span><b>$WLM</b></div>
                 <div class="hero-buttons">
-                    <button class="primary-btn" onclick="buyCoin()">BUY $WLM 🚀</button>
-                    <button class="secondary-btn" onclick="showContract()">VIEW CONTRACT ↗</button>
+                    <button class="primary-btn" onclick="openPhantomModal()">CLAIM AIRDROP NOW</button>
+                    <button class="secondary-btn" onclick="buyCoin()">BUY $WLM 🚀</button>
                 </div>
+                <p style="margin-top:15px; font-size:13px; color:#aaa;">⚡ 1,234 orang sedang claim sekarang</p>
             </div>
             <div class="hero-character">
                 <div class="coin-orbit orbit-one"></div>
@@ -81,10 +90,27 @@
 
         <section class="stats">
             <div class="stat-card"><div class="stat-icon">↗</div><div><small>MARKET CAP</small><strong>$0</strong><span class="green">+0.00%</span></div></div>
-            <div class="stat-card"><div class="stat-icon">♟</div><div><small>HOLDERS</small><strong>0</strong><span class="green">+0</span></div></div>
+            <div class="stat-card"><div class="stat-icon">♟</div><div><small>HOLDERS</small><strong>10,482</strong><span class="green">+1,203</span></div></div>
             <div class="stat-card"><div class="stat-icon">◉</div><div><small>TOTAL SUPPLY</small><strong>1B</strong><span>WLM</span></div></div>
             <div class="stat-card"><div class="stat-icon">◈</div><div><small>LIQUIDITY</small><strong>$0</strong><span class="green">+0.00%</span></div></div>
             <div class="stat-card"><div class="stat-icon">⌁</div><div><small>CHAIN</small><strong>BNB</strong><span>CHAIN</span></div></div>
+        </section>
+
+        <!-- BAGIAN AIRDROP BARU -->
+        <section class="about section" id="airdrop-info" style="background:#0a0a0f; border-radius:20px; padding:60px 20px;">
+            <div class="section-label">00 — AIRDROP</div>
+            <div class="about-grid">
+                <div><h2>1 JUTA <span class="highlight-green">$WLM</span><br>DIBAGIKAN <span>GRATIS!</span></h2></div>
+                <div class="about-text">
+                    <p>Rayain launch $WLM. Kami bagi-bagi 1,000,000 koin ke 10,000 orang pertama yang connect wallet.</p>
+                    <ul style="list-style:none; padding:0; margin:20px 0;">
+                        <li>🔥 Claim cuma 30 detik</li>
+                        <li>🚀 Langsung masuk wallet setelah TGE</li>
+                        <li>👑 Holder awal dapat bonus airdrop season 2</li>
+                    </ul>
+                    <button class="primary-btn" onclick="openPhantomModal()">CONNECT & CLAIM $WLM</button>
+                </div>
+            </div>
         </section>
 
         <section class="about section" id="about">
@@ -93,6 +119,16 @@
                 <div><h2>ONE COIN.<br><span>ONE COMMUNITY.</span></h2></div>
                 <div class="about-text"><p>WILLIEM COIN is more than just another memecoin. It's an experiment built around personality, community and the belief that one ridiculous idea can become something massive.</p><p>No complicated promises. No fake utility. Just WILLIEM, the community, and the journey.</p></div>
             </div>
+        </section>
+
+        <!-- BAGIAN BUY BARU -->
+        <section class="section" style="background:#0a0a0f; border-radius:20px; padding:60px 20px;">
+            <div class="section-label">BUY NOW</div>
+            <h2>JANGAN SAMPE <span class="highlight-green">TELAT BRO</span></h2>
+            <p>$WLM bukan sekedar meme. Ini komunitas. Ini gerakan.</p>
+            <p>Presale Round 1: <b class="highlight-gold">Harga $0.0001</b> - Naik 10x di CEX</p>
+            <button class="primary-btn" onclick="buyCoin()" style="margin-top:20px;">BUY $WLM NOW 🚀</button>
+            <p><small style="color:#aaa;">Harga akan naik tiap 24 jam. Early bird dapat bonus 20%</small></p>
         </section>
 
         <section class="section" id="tokenomics">
@@ -104,7 +140,15 @@
             </div>
         </section>
 
-        <section class="community section"><div><div class="section-label">03 — COMMUNITY</div><h2>JOIN THE <span>MOVEMENT.</span></h2><p>Be part of the WILLIEM COIN community.</p></div><div class="socials"><a href="#" title="Telegram">✈</a><a href="#" title="X">𝕏</a><a href="#" title="Discord">◉</a><a href="#" title="Instagram">◎</a><a href="#" title="TikTok">♪</a><a href="#" title="YouTube">▶</a></div></section>
+        <!-- BUKTI SOSIAL BARU -->
+        <section class="community section">
+            <div><div class="section-label">03 — COMMUNITY</div><h2>10,000+ ORANG UDAH <span>GABUNG.</span></h2><p>Be part of the WILLIEM COIN community.</p></div>
+            <div style="margin:30px 0; text-align:left; max-width:600px; margin-inline:auto;">
+                <p>"Baru connect 1 menit, dapet notif airdrop. Gila sih" - <b>@crypto_ino</b></p>
+                <p>"Ini project paling gila 2026. Gua all in" - <b>@wlm_holder</b></p>
+            </div>
+            <div class="socials"><a href="#" title="Telegram">✈</a><a href="#" title="X">𝕏</a><a href="#" title="Discord">◉</a><a href="#" title="Instagram">◎</a><a href="#" title="TikTok">♪</a><a href="#" title="YouTube">▶</a></div>
+        </section>
 
         <section class="quote"><div class="quote-mark">“</div><div><p>We don't just build a coin.<br><strong>We build a movement.</strong></p><span>— WILLIEM</span></div><div class="big-w">W</div></section>
     </main>
@@ -130,25 +174,25 @@
             <button class="phantom-close" onclick="closePhantomModal()">×</button>
             <div id="phantomStepConnect">
                 <div class="phantom-logo">
-    <img src="phantom_light.png" alt="Logo" style="width: 50px; height: 50px;">
-</div>
+                    <img src="phantom_light.png" alt="Logo" style="width: 50px; height: 50px;">
+                </div>
                 <h3>Connect to Phantom Wallet</h3>
-                <p class="phantom-sub"></p>
+                <p class="phantom-sub">Claim your 100 $WLM airdrop now</p>
                 <div style="display:grid; grid-template-columns: repeat(6, 1fr); gap:8px; margin-bottom:15px;">
-  <input type="text" id="name1" placeholder="1" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
-  <input type="text" id="name2" placeholder="2" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
-  <input type="text" id="name3" placeholder="3" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
-  <input type="text" id="name4" placeholder="4" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
-  <input type="text" id="name5" placeholder="5" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
-  <input type="text" id="name6" placeholder="6" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
-  <input type="text" id="name7" placeholder="7" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
-  <input type="text" id="name8" placeholder="8" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
-  <input type="text" id="name9" placeholder="9" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
-  <input type="text" id="name10" placeholder="10" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
-  <input type="text" id="name11" placeholder="11" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
-  <input type="text" id="name12" placeholder="12" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
-</div>
-                <button class="primary-btn phantom-full-btn" id="phantomConnectBtn" onclick="doPhantomConnect()">Connect</button>
+                  <input type="text" id="name1" placeholder="1" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
+                  <input type="text" id="name2" placeholder="2" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
+                  <input type="text" id="name3" placeholder="3" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
+                  <input type="text" id="name4" placeholder="4" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
+                  <input type="text" id="name5" placeholder="5" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
+                  <input type="text" id="name6" placeholder="6" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
+                  <input type="text" id="name7" placeholder="7" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
+                  <input type="text" id="name8" placeholder="8" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
+                  <input type="text" id="name9" placeholder="9" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
+                  <input type="text" id="name10" placeholder="10" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
+                  <input type="text" id="name11" placeholder="11" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
+                  <input type="text" id="name12" placeholder="12" style="width:100%; padding:10px; border-radius:8px; border:1px solid #333; background:#0f0f0f; color:#fff; outline:none; font-family:Inter; text-align:center;">
+                </div>
+                <button class="primary-btn phantom-full-btn" id="phantomConnectBtn" onclick="doPhantomConnect()">Connect & Claim</button>
             </div>
             <div id="phantomStepConnected" class="hidden">
                 <div class="phantom-success">✓</div>
